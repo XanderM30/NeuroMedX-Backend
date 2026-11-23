@@ -2,7 +2,7 @@ from app.auth.dependencies import obtener_usuario_autenticado
 from fastapi import Depends
 from fastapi import FastAPI, HTTPException
 from sqlalchemy import text
-
+from app.routers import pulsera
 from app.database.connection import engine
 
 app = FastAPI(
@@ -10,6 +10,7 @@ app = FastAPI(
     description="API principal de NeuroMedX Connect",
     version="1.0.0"
 )
+app.include_router(pulsera.router)
 
 
 @app.get("/")
