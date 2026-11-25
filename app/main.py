@@ -1,3 +1,7 @@
+from pydantic import BaseModel, Field
+from fastapi import Response, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from app.database.registro import registrar_paciente_firebase
 from app.auth.dependencies import obtener_usuario_autenticado
 from fastapi import Depends
 from fastapi import FastAPI, HTTPException
@@ -5,6 +9,13 @@ from sqlalchemy import text
 from app.routers import pulsera
 from app.ia.iamedicamentos import endpoints as ia_medicamentos
 from app.database.connection import engine
+
+bearer_registro = HTTPBearer(auto_error=False)
+
+
+class RegistroPaciente(BaseModel):
+    nombre: str = Field(min_length=1, max_length=100)
+    apellido: str = Field(min_length=1, max_length=100)
 
 app = FastAPI(
     title="NeuroMedX Connect API",
@@ -65,3 +76,37 @@ def obtener_perfil(
             "rol": usuario["rol"]
         }
     }
+@app.post(
+    "/usuarios/registro-paciente",
+    status_code=status.HTTP_201_CREATED
+)
+def registrar_paciente(
+    solicitud: RegistroPaciente,
+    response: Response,
+    credentials: HTTPAuthorizationCredentials | None = Depends(bearer_registro)
+):
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Se requiere autenticación de Firebase"
+        )
+
+    nombre = solicitud.nombre.strip()
+    apellido = solicitud.apellido.strip()
+
+    if not nombre or not apellido:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="El nombre y apellido son obligatorios"
+        )
+
+    resultado = registrar_paciente_firebase(
+        token=credentials.credentials,
+        nombre=nombre,
+        apellido=apellido
+    )
+
+    if resultado.get("existente"):
+        response.status_code = status.HTTP_200_OK
+
+    return resultado
