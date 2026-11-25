@@ -1,0 +1,36 @@
+﻿{
+  "proyecto": "NeuroMedX",
+  "modelo_base": "dccuchile/bert-base-spanish-wwm-cased",
+  "tarea": "reconocimiento_de_entidades",
+  "formato_etiquetado": "BIO",
+  "etiquetas_bio": [
+    "O",
+    "B-MED",
+    "I-MED"
+  ],
+  "medicamentos": [
+    {"id": "MED_001", "nombre": "Aciclovir"},
+    {"id": "MED_002", "nombre": "Amiodarona"},
+    {"id": "MED_003", "nombre": "Amoxicilina"},
+    {"id": "MED_004", "nombre": "Azitromicina"},
+    {"id": "MED_005", "nombre": "Cetirizina"},
+    {"id": "MED_006", "nombre": "Ciprofloxacino"},
+    {"id": "MED_007", "nombre": "Clorfenamina"},
+    {"id": "MED_008", "nombre": "Clotrimazol"},
+    {"id": "MED_009", "nombre": "Diclofenaco"},
+    {"id": "MED_010", "nombre": "Furosemida"},
+    {"id": "MED_011", "nombre": "Ibuprofeno"},
+    {"id": "MED_012", "nombre": "Ketorolaco"},
+    {"id": "MED_013", "nombre": "Loperamida"},
+    {"id": "MED_014", "nombre": "Loratadina"},
+    {"id": "MED_015", "nombre": "Losartán"},
+    {"id": "MED_016", "nombre": "Metformina"},
+    {"id": "MED_017", "nombre": "Metoclopramida"},
+    {"id": "MED_018", "nombre": "Omeprazol"},
+    {"id": "MED_019", "nombre": "Paracetamol"},
+    {"id": "MED_020", "nombre": "Prednisona"},
+    {"id": "MED_021", "nombre": "Ranitidina"},
+    {"id": "MED_022", "nombre": "Salbutamol"},
+    {"id": "MED_023", "nombre": "Sertralina"}
+  ]
+}

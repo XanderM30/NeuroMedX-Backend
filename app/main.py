@@ -3,6 +3,7 @@ from fastapi import Depends
 from fastapi import FastAPI, HTTPException
 from sqlalchemy import text
 from app.routers import pulsera
+from app.ia.iamedicamentos import endpoints as ia_medicamentos
 from app.database.connection import engine
 
 app = FastAPI(
@@ -11,6 +12,7 @@ app = FastAPI(
     version="1.0.0"
 )
 app.include_router(pulsera.router)
+app.include_router(ia_medicamentos.router)
 
 
 @app.get("/")
