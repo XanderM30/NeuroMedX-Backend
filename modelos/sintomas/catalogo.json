@@ -1,0 +1,2437 @@
+{
+  "manifestaciones": [
+    {
+      "canonico": "alteraciones del sueno o del apetito",
+      "enfermedades": [
+        "Depresión"
+      ],
+      "frases_originales": [
+        "Alteraciones del sueño o del apetito"
+      ],
+      "id": "SINT_8554D57428CA",
+      "tokens": [
+        "alteraciones",
+        "apetito",
+        "sueno"
+      ]
+    },
+    {
+      "canonico": "alteraciones sensoriales transitorias",
+      "enfermedades": [
+        "Epilepsia"
+      ],
+      "frases_originales": [
+        "Alteraciones sensoriales transitorias"
+      ],
+      "id": "SINT_85A09826C400",
+      "tokens": [
+        "alteraciones",
+        "sensoriales",
+        "transitorias"
+      ]
+    },
+    {
+      "canonico": "ardor al orinar",
+      "enfermedades": [
+        "Infección urinaria"
+      ],
+      "frases_originales": [
+        "Ardor al orinar"
+      ],
+      "id": "SINT_AFB5EA2924B8",
+      "tokens": [
+        "ardor",
+        "orinar"
+      ]
+    },
+    {
+      "canonico": "aumento de frecuencia urinaria",
+      "enfermedades": [
+        "Infección urinaria"
+      ],
+      "frases_originales": [
+        "Aumento de frecuencia urinaria"
+      ],
+      "id": "SINT_3F05DC2B2A32",
+      "tokens": [
+        "aumento",
+        "frecuencia",
+        "urinaria"
+      ]
+    },
+    {
+      "canonico": "aumento de peso sin causa aparente",
+      "enfermedades": [
+        "Hipotiroidismo"
+      ],
+      "frases_originales": [
+        "Aumento de peso sin causa aparente"
+      ],
+      "id": "SINT_B3AF2483056B",
+      "tokens": [
+        "aparente",
+        "aumento",
+        "causa",
+        "peso"
+      ]
+    },
+    {
+      "canonico": "cambios en las evacuaciones",
+      "enfermedades": [
+        "Colitis o inflamación intestinal"
+      ],
+      "frases_originales": [
+        "Cambios en las evacuaciones"
+      ],
+      "id": "SINT_58C2AB48CA65",
+      "tokens": [
+        "cambios",
+        "evacuaciones"
+      ]
+    },
+    {
+      "canonico": "cambios en las unas",
+      "enfermedades": [
+        "Psoriasis"
+      ],
+      "frases_originales": [
+        "Cambios en las uñas"
+      ],
+      "id": "SINT_EB8C879E09C3",
+      "tokens": [
+        "cambios"
+      ]
+    },
+    {
+      "canonico": "cansancio",
+      "enfermedades": [
+        "Anemia por deficiencia de hierro",
+        "COVID-19",
+        "Diabetes mellitus tipo 2",
+        "Gastroenteritis",
+        "Influenza (gripe)",
+        "Varicela"
+      ],
+      "frases_originales": [
+        "Cansancio"
+      ],
+      "id": "SINT_FF78BE6D7E9C",
+      "tokens": [
+        "cansancio"
+      ]
+    },
+    {
+      "canonico": "cansancio o deficiencia de nutrientes",
+      "enfermedades": [
+        "Enfermedad celíaca"
+      ],
+      "frases_originales": [
+        "Cansancio o deficiencia de nutrientes"
+      ],
+      "id": "SINT_FFF51B29445D",
+      "tokens": [
+        "cansancio",
+        "deficiencia",
+        "nutrientes"
+      ]
+    },
+    {
+      "canonico": "cansancio o falta de energia",
+      "enfermedades": [
+        "Depresión"
+      ],
+      "frases_originales": [
+        "Cansancio o falta de energía"
+      ],
+      "id": "SINT_1FA9C32F50AB",
+      "tokens": [
+        "cansancio",
+        "energia",
+        "falta"
+      ]
+    },
+    {
+      "canonico": "cansancio persistente",
+      "enfermedades": [
+        "Hipotiroidismo"
+      ],
+      "frases_originales": [
+        "Cansancio persistente"
+      ],
+      "id": "SINT_C5D8152977D0",
+      "tokens": [
+        "cansancio",
+        "persistente"
+      ]
+    },
+    {
+      "canonico": "colores que se ven menos vivos",
+      "enfermedades": [
+        "Cataratas"
+      ],
+      "frases_originales": [
+        "Colores que se ven menos vivos"
+      ],
+      "id": "SINT_97C4865BCFEC",
+      "tokens": [
+        "colores",
+        "menos",
+        "ven",
+        "vivos"
+      ]
+    },
+    {
+      "canonico": "confusion posterior al episodio",
+      "enfermedades": [
+        "Epilepsia"
+      ],
+      "frases_originales": [
+        "Confusión posterior al episodio"
+      ],
+      "id": "SINT_47FB7D65CAC4",
+      "tokens": [
+        "confusion",
+        "episodio",
+        "posterior"
+      ]
+    },
+    {
+      "canonico": "congestion",
+      "enfermedades": [
+        "Alergia estacional"
+      ],
+      "frases_originales": [
+        "Congestión"
+      ],
+      "id": "SINT_76A46512186E",
+      "tokens": [
+        "congestion"
+      ]
+    },
+    {
+      "canonico": "congestion nasal",
+      "enfermedades": [
+        "COVID-19",
+        "Resfriado común",
+        "Rinitis alérgica",
+        "Sinusitis"
+      ],
+      "frases_originales": [
+        "Congestión nasal"
+      ],
+      "id": "SINT_25A824703810",
+      "tokens": [
+        "congestion",
+        "nasal"
+      ]
+    },
+    {
+      "canonico": "costras al secarse",
+      "enfermedades": [
+        "Herpes labial"
+      ],
+      "frases_originales": [
+        "Costras al secarse"
+      ],
+      "id": "SINT_6C1DE2A20893",
+      "tokens": [
+        "costras",
+        "secarse"
+      ]
+    },
+    {
+      "canonico": "crisis convulsivas o episodios de desconexion subita",
+      "enfermedades": [
+        "Epilepsia"
+      ],
+      "frases_originales": [
+        "Crisis convulsivas o episodios de desconexión súbita"
+      ],
+      "id": "SINT_37B6E98D8C47",
+      "tokens": [
+        "convulsivas",
+        "crisis",
+        "desconexion",
+        "episodios",
+        "subita"
+      ]
+    },
+    {
+      "canonico": "crujidos o leve inflamacion en la articulacion",
+      "enfermedades": [
+        "Osteoartritis o artrosis"
+      ],
+      "frases_originales": [
+        "Crujidos o leve inflamación en la articulación"
+      ],
+      "id": "SINT_C2691730F358",
+      "tokens": [
+        "articulacion",
+        "crujidos",
+        "inflamacion",
+        "leve"
+      ]
+    },
+    {
+      "canonico": "debilidad al sostener objetos",
+      "enfermedades": [
+        "Síndrome del túnel carpiano"
+      ],
+      "frases_originales": [
+        "Debilidad al sostener objetos"
+      ],
+      "id": "SINT_F4580EB7E23D",
+      "tokens": [
+        "debilidad",
+        "objetos",
+        "sostener"
+      ]
+    },
+    {
+      "canonico": "descamacion o caspa",
+      "enfermedades": [
+        "Dermatitis seborreica"
+      ],
+      "frases_originales": [
+        "Descamación o caspa"
+      ],
+      "id": "SINT_B1123CCEC972",
+      "tokens": [
+        "caspa",
+        "descamacion"
+      ]
+    },
+    {
+      "canonico": "diarrea",
+      "enfermedades": [
+        "Gastroenteritis"
+      ],
+      "frases_originales": [
+        "Diarrea"
+      ],
+      "id": "SINT_092B56F33F99",
+      "tokens": [
+        "diarrea"
+      ]
+    },
+    {
+      "canonico": "diarrea cronica o heces palidas",
+      "enfermedades": [
+        "Enfermedad celíaca"
+      ],
+      "frases_originales": [
+        "Diarrea crónica o heces pálidas"
+      ],
+      "id": "SINT_13CB0A7BA6E5",
+      "tokens": [
+        "cronica",
+        "diarrea",
+        "heces",
+        "palidas"
+      ]
+    },
+    {
+      "canonico": "dificultad de concentracion o memoria",
+      "enfermedades": [
+        "Fibromialgia"
+      ],
+      "frases_originales": [
+        "Dificultad de concentración o memoria"
+      ],
+      "id": "SINT_517AD11D3175",
+      "tokens": [
+        "concentracion",
+        "dificultad",
+        "memoria"
+      ]
+    },
+    {
+      "canonico": "dificultad para respirar",
+      "enfermedades": [
+        "Asma",
+        "Bronquitis"
+      ],
+      "frases_originales": [
+        "Dificultad para respirar"
+      ],
+      "id": "SINT_0551125ADA69",
+      "tokens": [
+        "dificultad",
+        "respirar"
+      ]
+    },
+    {
+      "canonico": "dificultad para tragar",
+      "enfermedades": [
+        "Amigdalitis"
+      ],
+      "frases_originales": [
+        "Dificultad para tragar"
+      ],
+      "id": "SINT_79065A8A55B9",
+      "tokens": [
+        "dificultad",
+        "tragar"
+      ]
+    },
+    {
+      "canonico": "dificultad para ver de noche",
+      "enfermedades": [
+        "Cataratas"
+      ],
+      "frases_originales": [
+        "Dificultad para ver de noche"
+      ],
+      "id": "SINT_480E71EAE098",
+      "tokens": [
+        "dificultad",
+        "noche",
+        "ver"
+      ]
+    },
+    {
+      "canonico": "distension y dolor abdominal",
+      "enfermedades": [
+        "Enfermedad celíaca"
+      ],
+      "frases_originales": [
+        "Distensión y dolor abdominal"
+      ],
+      "id": "SINT_13B2A7575BFA",
+      "tokens": [
+        "abdominal",
+        "distension",
+        "dolor"
+      ]
+    },
+    {
+      "canonico": "dolor abdominal",
+      "enfermedades": [
+        "Gastroenteritis"
+      ],
+      "frases_originales": [
+        "Dolor abdominal"
+      ],
+      "id": "SINT_E41C88CD1824",
+      "tokens": [
+        "abdominal",
+        "dolor"
+      ]
+    },
+    {
+      "canonico": "dolor abdominal que inicia cerca del ombligo y migra hacia abajo a la derecha",
+      "enfermedades": [
+        "Apendicitis"
+      ],
+      "frases_originales": [
+        "Dolor abdominal que inicia cerca del ombligo y migra hacia abajo a la derecha"
+      ],
+      "id": "SINT_CA0A267F8201",
+      "tokens": [
+        "abajo",
+        "abdominal",
+        "cerca",
+        "derecha",
+        "dolor",
+        "inicia",
+        "migra",
+        "ombligo"
+      ]
+    },
+    {
+      "canonico": "dolor ardor u hormigueo en un lado del cuerpo o rostro",
+      "enfermedades": [
+        "Herpes zóster"
+      ],
+      "frases_originales": [
+        "Dolor, ardor u hormigueo en un lado del cuerpo o rostro"
+      ],
+      "id": "SINT_8AFE5EE58B76",
+      "tokens": [
+        "ardor",
+        "cuerpo",
+        "dolor",
+        "hormigueo",
+        "lado",
+        "rostro"
+      ]
+    },
+    {
+      "canonico": "dolor articular al moverse",
+      "enfermedades": [
+        "Osteoartritis o artrosis"
+      ],
+      "frases_originales": [
+        "Dolor articular al moverse"
+      ],
+      "id": "SINT_6E2873FC9E25",
+      "tokens": [
+        "articular",
+        "dolor",
+        "moverse"
+      ]
+    },
+    {
+      "canonico": "dolor de cabeza",
+      "enfermedades": [
+        "COVID-19",
+        "Dengue",
+        "Hipertensión arterial",
+        "Influenza (gripe)"
+      ],
+      "frases_originales": [
+        "Dolor de cabeza"
+      ],
+      "id": "SINT_F53E563D99B9",
+      "tokens": [
+        "cabeza",
+        "dolor"
+      ]
+    },
+    {
+      "canonico": "dolor de cabeza intenso",
+      "enfermedades": [
+        "Migraña"
+      ],
+      "frases_originales": [
+        "Dolor de cabeza intenso"
+      ],
+      "id": "SINT_CE03047FA02A",
+      "tokens": [
+        "cabeza",
+        "dolor",
+        "intenso"
+      ]
+    },
+    {
+      "canonico": "dolor de espalda por microfracturas",
+      "enfermedades": [
+        "Osteoporosis"
+      ],
+      "frases_originales": [
+        "Dolor de espalda por microfracturas"
+      ],
+      "id": "SINT_E01C44C6DBC8",
+      "tokens": [
+        "dolor",
+        "espalda",
+        "microfracturas"
+      ]
+    },
+    {
+      "canonico": "dolor de garganta",
+      "enfermedades": [
+        "Amigdalitis",
+        "COVID-19",
+        "Resfriado común"
+      ],
+      "frases_originales": [
+        "Dolor de garganta"
+      ],
+      "id": "SINT_A740A17C218A",
+      "tokens": [
+        "dolor",
+        "garganta"
+      ]
+    },
+    {
+      "canonico": "dolor de oido",
+      "enfermedades": [
+        "Otitis media"
+      ],
+      "frases_originales": [
+        "Dolor de oído"
+      ],
+      "id": "SINT_21CE3FF39D8B",
+      "tokens": [
+        "dolor",
+        "oido"
+      ]
+    },
+    {
+      "canonico": "dolor dental al morder o espontaneo",
+      "enfermedades": [
+        "Caries dental"
+      ],
+      "frases_originales": [
+        "Dolor dental al morder o espontáneo"
+      ],
+      "id": "SINT_C238A430E400",
+      "tokens": [
+        "dental",
+        "dolor",
+        "espontaneo",
+        "morder"
+      ]
+    },
+    {
+      "canonico": "dolor detras de los ojos",
+      "enfermedades": [
+        "Dengue"
+      ],
+      "frases_originales": [
+        "Dolor detrás de los ojos"
+      ],
+      "id": "SINT_44348E0C5A61",
+      "tokens": [
+        "detras",
+        "dolor",
+        "ojos"
+      ]
+    },
+    {
+      "canonico": "dolor e hinchazon simetrica en articulaciones pequenas",
+      "enfermedades": [
+        "Artritis reumatoide"
+      ],
+      "frases_originales": [
+        "Dolor e hinchazón simétrica en articulaciones pequeñas"
+      ],
+      "id": "SINT_8E410286E5A4",
+      "tokens": [
+        "articulaciones",
+        "dolor",
+        "hinchazon",
+        "pequenas",
+        "simetrica"
+      ]
+    },
+    {
+      "canonico": "dolor en la muneca o mano que puede subir al antebrazo",
+      "enfermedades": [
+        "Síndrome del túnel carpiano"
+      ],
+      "frases_originales": [
+        "Dolor en la muñeca o mano que puede subir al antebrazo"
+      ],
+      "id": "SINT_803CB200B5F0",
+      "tokens": [
+        "antebrazo",
+        "dolor",
+        "mano",
+        "muneca",
+        "puede",
+        "subir"
+      ]
+    },
+    {
+      "canonico": "dolor en la parte superior derecha del abdomen tras comer",
+      "enfermedades": [
+        "Colecistitis o cálculos biliares"
+      ],
+      "frases_originales": [
+        "Dolor en la parte superior derecha del abdomen tras comer"
+      ],
+      "id": "SINT_502C470B33E1",
+      "tokens": [
+        "abdomen",
+        "comer",
+        "derecha",
+        "dolor",
+        "parte",
+        "superior",
+        "tras"
+      ]
+    },
+    {
+      "canonico": "dolor en las articulaciones",
+      "enfermedades": [
+        "Dengue"
+      ],
+      "frases_originales": [
+        "Dolor en las articulaciones"
+      ],
+      "id": "SINT_C268395F7646",
+      "tokens": [
+        "articulaciones",
+        "dolor"
+      ]
+    },
+    {
+      "canonico": "dolor facial",
+      "enfermedades": [
+        "Sinusitis"
+      ],
+      "frases_originales": [
+        "Dolor facial"
+      ],
+      "id": "SINT_7DF22FDA77CD",
+      "tokens": [
+        "dolor",
+        "facial"
+      ]
+    },
+    {
+      "canonico": "dolor muscular",
+      "enfermedades": [
+        "COVID-19",
+        "Dengue",
+        "Influenza (gripe)"
+      ],
+      "frases_originales": [
+        "Dolor muscular"
+      ],
+      "id": "SINT_AFDF1EFD0266",
+      "tokens": [
+        "dolor",
+        "muscular"
+      ]
+    },
+    {
+      "canonico": "dolor musculoesqueletico generalizado",
+      "enfermedades": [
+        "Fibromialgia"
+      ],
+      "frases_originales": [
+        "Dolor musculoesquelético generalizado"
+      ],
+      "id": "SINT_E97746091AE8",
+      "tokens": [
+        "dolor",
+        "generalizado",
+        "musculoesqueletico"
+      ]
+    },
+    {
+      "canonico": "dolor o ardor en el estomago entre comidas o de noche",
+      "enfermedades": [
+        "Úlcera péptica"
+      ],
+      "frases_originales": [
+        "Dolor o ardor en el estómago entre comidas o de noche"
+      ],
+      "id": "SINT_70BB582C72B0",
+      "tokens": [
+        "ardor",
+        "comidas",
+        "dolor",
+        "estomago",
+        "noche"
+      ]
+    },
+    {
+      "canonico": "dolor o ardor en la parte superior del abdomen",
+      "enfermedades": [
+        "Infección por Helicobacter pylori"
+      ],
+      "frases_originales": [
+        "Dolor o ardor en la parte superior del abdomen"
+      ],
+      "id": "SINT_BCBDCBEE2F9B",
+      "tokens": [
+        "abdomen",
+        "ardor",
+        "dolor",
+        "parte",
+        "superior"
+      ]
+    },
+    {
+      "canonico": "dolor o colicos abdominales",
+      "enfermedades": [
+        "Colitis o inflamación intestinal"
+      ],
+      "frases_originales": [
+        "Dolor o cólicos abdominales"
+      ],
+      "id": "SINT_A31CDF5B142B",
+      "tokens": [
+        "abdominales",
+        "colicos",
+        "dolor"
+      ]
+    },
+    {
+      "canonico": "dolor o sensibilidad en la pantorrilla o muslo",
+      "enfermedades": [
+        "Trombosis venosa profunda"
+      ],
+      "frases_originales": [
+        "Dolor o sensibilidad en la pantorrilla o muslo"
+      ],
+      "id": "SINT_A6DD40BE68CA",
+      "tokens": [
+        "dolor",
+        "muslo",
+        "pantorrilla",
+        "sensibilidad"
+      ]
+    },
+    {
+      "canonico": "dolor ocular intenso y enrojecimiento en cuadros agudos",
+      "enfermedades": [
+        "Glaucoma"
+      ],
+      "frases_originales": [
+        "Dolor ocular intenso y enrojecimiento en cuadros agudos"
+      ],
+      "id": "SINT_8AC26C9D26CF",
+      "tokens": [
+        "agudos",
+        "cuadros",
+        "dolor",
+        "enrojecimiento",
+        "intenso",
+        "ocular"
+      ]
+    },
+    {
+      "canonico": "dolor pelvico",
+      "enfermedades": [
+        "Infección urinaria"
+      ],
+      "frases_originales": [
+        "Dolor pélvico"
+      ],
+      "id": "SINT_7DA0308C6C43",
+      "tokens": [
+        "dolor",
+        "pelvico"
+      ]
+    },
+    {
+      "canonico": "dolor que puede irradiarse a la espalda o el hombro derecho",
+      "enfermedades": [
+        "Colecistitis o cálculos biliares"
+      ],
+      "frases_originales": [
+        "Dolor que puede irradiarse a la espalda o el hombro derecho"
+      ],
+      "id": "SINT_3C4F6459711A",
+      "tokens": [
+        "derecho",
+        "dolor",
+        "espalda",
+        "hombro",
+        "irradiarse",
+        "puede"
+      ]
+    },
+    {
+      "canonico": "enrojecimiento",
+      "enfermedades": [
+        "Dermatitis atópica"
+      ],
+      "frases_originales": [
+        "Enrojecimiento"
+      ],
+      "id": "SINT_CFF2B2F9B2CA",
+      "tokens": [
+        "enrojecimiento"
+      ]
+    },
+    {
+      "canonico": "enrojecimiento de los ojos",
+      "enfermedades": [
+        "Conjuntivitis"
+      ],
+      "frases_originales": [
+        "Enrojecimiento de los ojos"
+      ],
+      "id": "SINT_89C60C3DB5CD",
+      "tokens": [
+        "enrojecimiento",
+        "ojos"
+      ]
+    },
+    {
+      "canonico": "enrojecimiento en cuero cabelludo cejas o lados de la nariz",
+      "enfermedades": [
+        "Dermatitis seborreica"
+      ],
+      "frases_originales": [
+        "Enrojecimiento en cuero cabelludo, cejas o lados de la nariz"
+      ],
+      "id": "SINT_FD5844D52940",
+      "tokens": [
+        "cabelludo",
+        "cejas",
+        "cuero",
+        "enrojecimiento",
+        "lados",
+        "nariz"
+      ]
+    },
+    {
+      "canonico": "enrojecimiento o cambio de coloracion",
+      "enfermedades": [
+        "Trombosis venosa profunda"
+      ],
+      "frases_originales": [
+        "Enrojecimiento o cambio de coloración"
+      ],
+      "id": "SINT_D809E58E5137",
+      "tokens": [
+        "cambio",
+        "coloracion",
+        "enrojecimiento"
+      ]
+    },
+    {
+      "canonico": "enrojecimiento o inflamacion local",
+      "enfermedades": [
+        "Candidiasis vaginal"
+      ],
+      "frases_originales": [
+        "Enrojecimiento o inflamación local"
+      ],
+      "id": "SINT_FA65BE259DBF",
+      "tokens": [
+        "enrojecimiento",
+        "inflamacion",
+        "local"
+      ]
+    },
+    {
+      "canonico": "eructos frecuentes",
+      "enfermedades": [
+        "Infección por Helicobacter pylori"
+      ],
+      "frases_originales": [
+        "Eructos frecuentes"
+      ],
+      "id": "SINT_78635ADF3F60",
+      "tokens": [
+        "eructos",
+        "frecuentes"
+      ]
+    },
+    {
+      "canonico": "eructos o distension",
+      "enfermedades": [
+        "Úlcera péptica"
+      ],
+      "frases_originales": [
+        "Eructos o distensión"
+      ],
+      "id": "SINT_A97923902374",
+      "tokens": [
+        "distension",
+        "eructos"
+      ]
+    },
+    {
+      "canonico": "escurrimiento nasal transparente",
+      "enfermedades": [
+        "Rinitis alérgica"
+      ],
+      "frases_originales": [
+        "Escurrimiento nasal transparente"
+      ],
+      "id": "SINT_52F672F17C2F",
+      "tokens": [
+        "escurrimiento",
+        "nasal",
+        "transparente"
+      ]
+    },
+    {
+      "canonico": "estornudos",
+      "enfermedades": [
+        "Alergia estacional",
+        "Resfriado común"
+      ],
+      "frases_originales": [
+        "Estornudos"
+      ],
+      "id": "SINT_A86BB6B0C277",
+      "tokens": [
+        "estornudos"
+      ]
+    },
+    {
+      "canonico": "estornudos frecuentes",
+      "enfermedades": [
+        "Rinitis alérgica"
+      ],
+      "frases_originales": [
+        "Estornudos frecuentes"
+      ],
+      "id": "SINT_D39169E5EF86",
+      "tokens": [
+        "estornudos",
+        "frecuentes"
+      ]
+    },
+    {
+      "canonico": "falta de aire al hacer esfuerzos",
+      "enfermedades": [
+        "Enfermedad pulmonar obstructiva crónica"
+      ],
+      "frases_originales": [
+        "Falta de aire al hacer esfuerzos"
+      ],
+      "id": "SINT_267618BBF171",
+      "tokens": [
+        "aire",
+        "esfuerzos",
+        "falta",
+        "hacer"
+      ]
+    },
+    {
+      "canonico": "fatiga",
+      "enfermedades": [
+        "Artritis reumatoide",
+        "Bronquitis",
+        "Enfermedad pulmonar obstructiva crónica",
+        "Hígado graso no alcohólico"
+      ],
+      "frases_originales": [
+        "Fatiga"
+      ],
+      "id": "SINT_421B256DDE64",
+      "tokens": [
+        "fatiga"
+      ]
+    },
+    {
+      "canonico": "fatiga persistente",
+      "enfermedades": [
+        "Fibromialgia"
+      ],
+      "frases_originales": [
+        "Fatiga persistente"
+      ],
+      "id": "SINT_9E05AEF56B01",
+      "tokens": [
+        "fatiga",
+        "persistente"
+      ]
+    },
+    {
+      "canonico": "fiebre",
+      "enfermedades": [
+        "Amigdalitis",
+        "Dengue",
+        "Influenza (gripe)",
+        "Otitis media"
+      ],
+      "frases_originales": [
+        "Fiebre"
+      ],
+      "id": "SINT_12F47127AD23",
+      "tokens": [
+        "fiebre"
+      ]
+    },
+    {
+      "canonico": "fiebre baja",
+      "enfermedades": [
+        "Apendicitis"
+      ],
+      "frases_originales": [
+        "Fiebre baja"
+      ],
+      "id": "SINT_72B2E611147D",
+      "tokens": [
+        "baja",
+        "fiebre"
+      ]
+    },
+    {
+      "canonico": "fiebre moderada",
+      "enfermedades": [
+        "Varicela"
+      ],
+      "frases_originales": [
+        "Fiebre moderada"
+      ],
+      "id": "SINT_EA6954F26234",
+      "tokens": [
+        "fiebre",
+        "moderada"
+      ]
+    },
+    {
+      "canonico": "fiebre o escalofrios",
+      "enfermedades": [
+        "COVID-19"
+      ],
+      "frases_originales": [
+        "Fiebre o escalofríos"
+      ],
+      "id": "SINT_C3910D0AF031",
+      "tokens": [
+        "escalofrios",
+        "fiebre"
+      ]
+    },
+    {
+      "canonico": "flujo espeso y blanquecino sin mal olor fuerte",
+      "enfermedades": [
+        "Candidiasis vaginal"
+      ],
+      "frases_originales": [
+        "Flujo espeso y blanquecino sin mal olor fuerte"
+      ],
+      "id": "SINT_F6BDF017CCC4",
+      "tokens": [
+        "blanquecino",
+        "espeso",
+        "flujo",
+        "fuerte",
+        "mal",
+        "olor"
+      ]
+    },
+    {
+      "canonico": "flujo vaginal grisaceo o blanco",
+      "enfermedades": [
+        "Vaginosis bacteriana"
+      ],
+      "frases_originales": [
+        "Flujo vaginal grisáceo o blanco"
+      ],
+      "id": "SINT_0EE5C6EE01D7",
+      "tokens": [
+        "blanco",
+        "flujo",
+        "grisaceo",
+        "vaginal"
+      ]
+    },
+    {
+      "canonico": "ganas frecuentes de orinar",
+      "enfermedades": [
+        "Diabetes mellitus tipo 2"
+      ],
+      "frases_originales": [
+        "Ganas frecuentes de orinar"
+      ],
+      "id": "SINT_84081E09AB09",
+      "tokens": [
+        "frecuentes",
+        "ganas",
+        "orinar"
+      ]
+    },
+    {
+      "canonico": "ganglios inflamados",
+      "enfermedades": [
+        "Amigdalitis"
+      ],
+      "frases_originales": [
+        "Ganglios inflamados"
+      ],
+      "id": "SINT_855F272AEFB9",
+      "tokens": [
+        "ganglios",
+        "inflamados"
+      ]
+    },
+    {
+      "canonico": "hinchazon en una pierna",
+      "enfermedades": [
+        "Trombosis venosa profunda"
+      ],
+      "frases_originales": [
+        "Hinchazón en una pierna"
+      ],
+      "id": "SINT_0ED242C867D3",
+      "tokens": [
+        "hinchazon",
+        "pierna"
+      ]
+    },
+    {
+      "canonico": "hinchazon o gases",
+      "enfermedades": [
+        "Colecistitis o cálculos biliares"
+      ],
+      "frases_originales": [
+        "Hinchazón o gases"
+      ],
+      "id": "SINT_3D614BB59EC0",
+      "tokens": [
+        "gases",
+        "hinchazon"
+      ]
+    },
+    {
+      "canonico": "hinchazon o sensacion de llenura",
+      "enfermedades": [
+        "Infección por Helicobacter pylori"
+      ],
+      "frases_originales": [
+        "Hinchazón o sensación de llenura"
+      ],
+      "id": "SINT_7ABD2B455E7B",
+      "tokens": [
+        "hinchazon",
+        "llenura",
+        "sensacion"
+      ]
+    },
+    {
+      "canonico": "hormigueo o adormecimiento en pulgar indice y medio",
+      "enfermedades": [
+        "Síndrome del túnel carpiano"
+      ],
+      "frases_originales": [
+        "Hormigueo o adormecimiento en pulgar, índice y medio"
+      ],
+      "id": "SINT_331BC6ED33B5",
+      "tokens": [
+        "adormecimiento",
+        "hormigueo",
+        "indice",
+        "medio",
+        "pulgar"
+      ]
+    },
+    {
+      "canonico": "hormigueo o ardor en el labio",
+      "enfermedades": [
+        "Herpes labial"
+      ],
+      "frases_originales": [
+        "Hormigueo o ardor en el labio"
+      ],
+      "id": "SINT_938F7A08D7BA",
+      "tokens": [
+        "ardor",
+        "hormigueo",
+        "labio"
+      ]
+    },
+    {
+      "canonico": "inflamacion y gases",
+      "enfermedades": [
+        "Colitis o inflamación intestinal"
+      ],
+      "frases_originales": [
+        "Inflamación y gases"
+      ],
+      "id": "SINT_2309BA495C17",
+      "tokens": [
+        "gases",
+        "inflamacion"
+      ]
+    },
+    {
+      "canonico": "intolerancia al calor",
+      "enfermedades": [
+        "Hipertiroidismo"
+      ],
+      "frases_originales": [
+        "Intolerancia al calor"
+      ],
+      "id": "SINT_628407082BF9",
+      "tokens": [
+        "calor",
+        "intolerancia"
+      ]
+    },
+    {
+      "canonico": "irritacion",
+      "enfermedades": [
+        "Dermatitis atópica"
+      ],
+      "frases_originales": [
+        "Irritación"
+      ],
+      "id": "SINT_D0B459A8267A",
+      "tokens": [
+        "irritacion"
+      ]
+    },
+    {
+      "canonico": "lagrimeo",
+      "enfermedades": [
+        "Conjuntivitis"
+      ],
+      "frases_originales": [
+        "Lagrimeo"
+      ],
+      "id": "SINT_FF604C488F1D",
+      "tokens": [
+        "lagrimeo"
+      ]
+    },
+    {
+      "canonico": "leve irritacion o picazon",
+      "enfermedades": [
+        "Vaginosis bacteriana"
+      ],
+      "frases_originales": [
+        "Leve irritación o picazón"
+      ],
+      "id": "SINT_F805757A27F4",
+      "tokens": [
+        "irritacion",
+        "leve",
+        "picazon"
+      ]
+    },
+    {
+      "canonico": "malestar general",
+      "enfermedades": [
+        "Herpes zóster"
+      ],
+      "frases_originales": [
+        "Malestar general"
+      ],
+      "id": "SINT_2DC4C1EC70F2",
+      "tokens": [
+        "general",
+        "malestar"
+      ]
+    },
+    {
+      "canonico": "manchas oscuras o blancas en el diente",
+      "enfermedades": [
+        "Caries dental"
+      ],
+      "frases_originales": [
+        "Manchas oscuras o blancas en el diente"
+      ],
+      "id": "SINT_B4D3797C2934",
+      "tokens": [
+        "blancas",
+        "diente",
+        "manchas",
+        "oscuras"
+      ]
+    },
+    {
+      "canonico": "mareo",
+      "enfermedades": [
+        "Migraña"
+      ],
+      "frases_originales": [
+        "Mareo"
+      ],
+      "id": "SINT_50DF4C279F03",
+      "tokens": [
+        "mareo"
+      ]
+    },
+    {
+      "canonico": "mareos",
+      "enfermedades": [
+        "Anemia por deficiencia de hierro",
+        "Hipertensión arterial"
+      ],
+      "frases_originales": [
+        "Mareos"
+      ],
+      "id": "SINT_67F8CC1DB403",
+      "tokens": [
+        "mareos"
+      ]
+    },
+    {
+      "canonico": "mayor sensibilidad al deslumbramiento o luces brillantes",
+      "enfermedades": [
+        "Cataratas"
+      ],
+      "frases_originales": [
+        "Mayor sensibilidad al deslumbramiento o luces brillantes"
+      ],
+      "id": "SINT_84EA2CF01F18",
+      "tokens": [
+        "brillantes",
+        "deslumbramiento",
+        "luces",
+        "mayor",
+        "sensibilidad"
+      ]
+    },
+    {
+      "canonico": "molestia al orinar",
+      "enfermedades": [
+        "Vaginosis bacteriana"
+      ],
+      "frases_originales": [
+        "Molestia al orinar"
+      ],
+      "id": "SINT_FBEA21E74C82",
+      "tokens": [
+        "molestia",
+        "orinar"
+      ]
+    },
+    {
+      "canonico": "molestia al orinar o en relaciones sexuales",
+      "enfermedades": [
+        "Candidiasis vaginal"
+      ],
+      "frases_originales": [
+        "Molestia al orinar o en relaciones sexuales"
+      ],
+      "id": "SINT_E8C3A05E29A7",
+      "tokens": [
+        "molestia",
+        "orinar",
+        "relaciones",
+        "sexuales"
+      ]
+    },
+    {
+      "canonico": "molestia leve en el cuadrante superior derecho del abdomen",
+      "enfermedades": [
+        "Hígado graso no alcohólico"
+      ],
+      "frases_originales": [
+        "Molestia leve en el cuadrante superior derecho del abdomen"
+      ],
+      "id": "SINT_0F45FC1AFE69",
+      "tokens": [
+        "abdomen",
+        "cuadrante",
+        "derecho",
+        "leve",
+        "molestia",
+        "superior"
+      ]
+    },
+    {
+      "canonico": "molestia nocturna",
+      "enfermedades": [
+        "Síndrome del túnel carpiano"
+      ],
+      "frases_originales": [
+        "Molestia nocturna"
+      ],
+      "id": "SINT_32D22281D9EC",
+      "tokens": [
+        "molestia",
+        "nocturna"
+      ]
+    },
+    {
+      "canonico": "molestia que mejora temporalmente al comer o tomar antiacidos",
+      "enfermedades": [
+        "Úlcera péptica"
+      ],
+      "frases_originales": [
+        "Molestia que mejora temporalmente al comer o tomar antiácidos"
+      ],
+      "id": "SINT_CD4F2A0C3A59",
+      "tokens": [
+        "antiacidos",
+        "comer",
+        "mejora",
+        "molestia",
+        "temporalmente",
+        "tomar"
+      ]
+    },
+    {
+      "canonico": "movimientos involuntarios o rigidez",
+      "enfermedades": [
+        "Epilepsia"
+      ],
+      "frases_originales": [
+        "Movimientos involuntarios o rigidez"
+      ],
+      "id": "SINT_695B0E7CA58B",
+      "tokens": [
+        "involuntarios",
+        "movimientos",
+        "rigidez"
+      ]
+    },
+    {
+      "canonico": "mucosidad espesa",
+      "enfermedades": [
+        "Sinusitis"
+      ],
+      "frases_originales": [
+        "Mucosidad espesa"
+      ],
+      "id": "SINT_4A70B2FA9A1F",
+      "tokens": [
+        "espesa",
+        "mucosidad"
+      ]
+    },
+    {
+      "canonico": "nauseas",
+      "enfermedades": [
+        "Dengue",
+        "Gastroenteritis",
+        "Infección por Helicobacter pylori",
+        "Migraña",
+        "Úlcera péptica"
+      ],
+      "frases_originales": [
+        "Náuseas"
+      ],
+      "id": "SINT_2DDD8F1F287B",
+      "tokens": [
+        "nauseas"
+      ]
+    },
+    {
+      "canonico": "nauseas en crisis agudas",
+      "enfermedades": [
+        "Glaucoma"
+      ],
+      "frases_originales": [
+        "Náuseas en crisis agudas"
+      ],
+      "id": "SINT_BA9C71A671A1",
+      "tokens": [
+        "agudas",
+        "crisis",
+        "nauseas"
+      ]
+    },
+    {
+      "canonico": "nauseas o vomito",
+      "enfermedades": [
+        "Apendicitis",
+        "Colecistitis o cálculos biliares"
+      ],
+      "frases_originales": [
+        "Náuseas o vómito"
+      ],
+      "id": "SINT_06C29FCF7D0D",
+      "tokens": [
+        "nauseas",
+        "vomito"
+      ]
+    },
+    {
+      "canonico": "nerviosismo o ansias",
+      "enfermedades": [
+        "Hipertiroidismo"
+      ],
+      "frases_originales": [
+        "Nerviosismo o ansias"
+      ],
+      "id": "SINT_BBDCE88895C1",
+      "tokens": [
+        "ansias",
+        "nerviosismo"
+      ]
+    },
+    {
+      "canonico": "ojos llorosos",
+      "enfermedades": [
+        "Alergia estacional"
+      ],
+      "frases_originales": [
+        "Ojos llorosos"
+      ],
+      "id": "SINT_A1D51528F53E",
+      "tokens": [
+        "llorosos",
+        "ojos"
+      ]
+    },
+    {
+      "canonico": "olor a pescado mas notable tras relaciones sexuales",
+      "enfermedades": [
+        "Vaginosis bacteriana"
+      ],
+      "frases_originales": [
+        "Olor a pescado más notable tras relaciones sexuales"
+      ],
+      "id": "SINT_A4A0686BC7BC",
+      "tokens": [
+        "notable",
+        "olor",
+        "pescado",
+        "relaciones",
+        "sexuales",
+        "tras"
+      ]
+    },
+    {
+      "canonico": "opresion en el pecho",
+      "enfermedades": [
+        "Asma",
+        "Bronquitis"
+      ],
+      "frases_originales": [
+        "Opresión en el pecho"
+      ],
+      "id": "SINT_0A6A1696C434",
+      "tokens": [
+        "opresion",
+        "pecho"
+      ]
+    },
+    {
+      "canonico": "orificio o cavidad visible",
+      "enfermedades": [
+        "Caries dental"
+      ],
+      "frases_originales": [
+        "Orificio o cavidad visible"
+      ],
+      "id": "SINT_AF4AA1258848",
+      "tokens": [
+        "cavidad",
+        "orificio",
+        "visible"
+      ]
+    },
+    {
+      "canonico": "orina turbia",
+      "enfermedades": [
+        "Infección urinaria"
+      ],
+      "frases_originales": [
+        "Orina turbia"
+      ],
+      "id": "SINT_8103AC2493A1",
+      "tokens": [
+        "orina",
+        "turbia"
+      ]
+    },
+    {
+      "canonico": "palidez",
+      "enfermedades": [
+        "Anemia por deficiencia de hierro"
+      ],
+      "frases_originales": [
+        "Palidez"
+      ],
+      "id": "SINT_E8A5FC3B4156",
+      "tokens": [
+        "palidez"
+      ]
+    },
+    {
+      "canonico": "palpitaciones o ritmo cardiaco acelerado",
+      "enfermedades": [
+        "Hipertiroidismo"
+      ],
+      "frases_originales": [
+        "Palpitaciones o ritmo cardíaco acelerado"
+      ],
+      "id": "SINT_9AD4D0D2D873",
+      "tokens": [
+        "acelerado",
+        "cardiaco",
+        "palpitaciones",
+        "ritmo"
+      ]
+    },
+    {
+      "canonico": "pequenas ampollas agrupadas",
+      "enfermedades": [
+        "Herpes labial"
+      ],
+      "frases_originales": [
+        "Pequeñas ampollas agrupadas"
+      ],
+      "id": "SINT_9397C0311785",
+      "tokens": [
+        "agrupadas",
+        "ampollas",
+        "pequenas"
+      ]
+    },
+    {
+      "canonico": "perdida de apetito",
+      "enfermedades": [
+        "Apendicitis"
+      ],
+      "frases_originales": [
+        "Pérdida de apetito"
+      ],
+      "id": "SINT_755F1D09EE53",
+      "tokens": [
+        "apetito",
+        "perdida"
+      ]
+    },
+    {
+      "canonico": "perdida de flexibilidad",
+      "enfermedades": [
+        "Osteoartritis o artrosis"
+      ],
+      "frases_originales": [
+        "Pérdida de flexibilidad"
+      ],
+      "id": "SINT_536B5907CF51",
+      "tokens": [
+        "flexibilidad",
+        "perdida"
+      ]
+    },
+    {
+      "canonico": "perdida de interes en actividades habituales",
+      "enfermedades": [
+        "Depresión"
+      ],
+      "frases_originales": [
+        "Pérdida de interés en actividades habituales"
+      ],
+      "id": "SINT_616903F5BF8D",
+      "tokens": [
+        "actividades",
+        "habituales",
+        "interes",
+        "perdida"
+      ]
+    },
+    {
+      "canonico": "perdida de peso",
+      "enfermedades": [
+        "Enfermedad celíaca"
+      ],
+      "frases_originales": [
+        "Pérdida de peso"
+      ],
+      "id": "SINT_6A1FA8692BCB",
+      "tokens": [
+        "perdida",
+        "peso"
+      ]
+    },
+    {
+      "canonico": "perdida de peso involuntaria",
+      "enfermedades": [
+        "Hipertiroidismo"
+      ],
+      "frases_originales": [
+        "Pérdida de peso involuntaria"
+      ],
+      "id": "SINT_17BCD0EDDD32",
+      "tokens": [
+        "involuntaria",
+        "perdida",
+        "peso"
+      ]
+    },
+    {
+      "canonico": "perdida gradual de estatura",
+      "enfermedades": [
+        "Osteoporosis"
+      ],
+      "frases_originales": [
+        "Pérdida gradual de estatura"
+      ],
+      "id": "SINT_F5C535A37FE3",
+      "tokens": [
+        "estatura",
+        "gradual",
+        "perdida"
+      ]
+    },
+    {
+      "canonico": "perdida gradual de vision periferica en etapas avanzadas",
+      "enfermedades": [
+        "Glaucoma"
+      ],
+      "frases_originales": [
+        "Pérdida gradual de visión periférica en etapas avanzadas"
+      ],
+      "id": "SINT_D9A0C6BED2E6",
+      "tokens": [
+        "avanzadas",
+        "etapas",
+        "gradual",
+        "perdida",
+        "periferica",
+        "vision"
+      ]
+    },
+    {
+      "canonico": "perdida reciente del gusto o del olfato",
+      "enfermedades": [
+        "COVID-19"
+      ],
+      "frases_originales": [
+        "Pérdida reciente del gusto o del olfato"
+      ],
+      "id": "SINT_E45124931ECC",
+      "tokens": [
+        "gusto",
+        "olfato",
+        "perdida",
+        "reciente"
+      ]
+    },
+    {
+      "canonico": "perdida temporal de audicion",
+      "enfermedades": [
+        "Otitis media"
+      ],
+      "frases_originales": [
+        "Pérdida temporal de audición"
+      ],
+      "id": "SINT_2ED870A7A081",
+      "tokens": [
+        "audicion",
+        "perdida",
+        "temporal"
+      ]
+    },
+    {
+      "canonico": "picazon en los ojos",
+      "enfermedades": [
+        "Conjuntivitis"
+      ],
+      "frases_originales": [
+        "Picazón en los ojos"
+      ],
+      "id": "SINT_DED4313ADC67",
+      "tokens": [
+        "ojos",
+        "picazon"
+      ]
+    },
+    {
+      "canonico": "picazon en nariz y ojos",
+      "enfermedades": [
+        "Rinitis alérgica"
+      ],
+      "frases_originales": [
+        "Picazón en nariz y ojos"
+      ],
+      "id": "SINT_9F7A42C4D949",
+      "tokens": [
+        "nariz",
+        "ojos",
+        "picazon"
+      ]
+    },
+    {
+      "canonico": "picazon intensa",
+      "enfermedades": [
+        "Dermatitis atópica",
+        "Herpes zóster",
+        "Varicela"
+      ],
+      "frases_originales": [
+        "Picazón intensa"
+      ],
+      "id": "SINT_CB1A8955E02F",
+      "tokens": [
+        "intensa",
+        "picazon"
+      ]
+    },
+    {
+      "canonico": "picazon leve",
+      "enfermedades": [
+        "Dermatitis seborreica"
+      ],
+      "frases_originales": [
+        "Picazón leve"
+      ],
+      "id": "SINT_74118CD83992",
+      "tokens": [
+        "leve",
+        "picazon"
+      ]
+    },
+    {
+      "canonico": "picazon nasal",
+      "enfermedades": [
+        "Alergia estacional"
+      ],
+      "frases_originales": [
+        "Picazón nasal"
+      ],
+      "id": "SINT_E451927A3F5E",
+      "tokens": [
+        "nasal",
+        "picazon"
+      ]
+    },
+    {
+      "canonico": "picazon o ardor",
+      "enfermedades": [
+        "Psoriasis"
+      ],
+      "frases_originales": [
+        "Picazón o ardor"
+      ],
+      "id": "SINT_311F537340C4",
+      "tokens": [
+        "ardor",
+        "picazon"
+      ]
+    },
+    {
+      "canonico": "picazon o ardor vaginal o vulvar",
+      "enfermedades": [
+        "Candidiasis vaginal"
+      ],
+      "frases_originales": [
+        "Picazón o ardor vaginal o vulvar"
+      ],
+      "id": "SINT_F1D71396E8A4",
+      "tokens": [
+        "ardor",
+        "picazon",
+        "vaginal",
+        "vulvar"
+      ]
+    },
+    {
+      "canonico": "piel grasa con escamas",
+      "enfermedades": [
+        "Dermatitis seborreica"
+      ],
+      "frases_originales": [
+        "Piel grasa con escamas"
+      ],
+      "id": "SINT_6098F1AEEAE9",
+      "tokens": [
+        "escamas",
+        "grasa",
+        "piel"
+      ]
+    },
+    {
+      "canonico": "piel seca",
+      "enfermedades": [
+        "Dermatitis atópica"
+      ],
+      "frases_originales": [
+        "Piel seca"
+      ],
+      "id": "SINT_3ACB2C61735B",
+      "tokens": [
+        "piel",
+        "seca"
+      ]
+    },
+    {
+      "canonico": "piel seca o caida de cabello",
+      "enfermedades": [
+        "Hipotiroidismo"
+      ],
+      "frases_originales": [
+        "Piel seca o caída de cabello"
+      ],
+      "id": "SINT_33253DEB02C7",
+      "tokens": [
+        "cabello",
+        "caida",
+        "piel",
+        "seca"
+      ]
+    },
+    {
+      "canonico": "piel seca que puede agrietarse",
+      "enfermedades": [
+        "Psoriasis"
+      ],
+      "frases_originales": [
+        "Piel seca que puede agrietarse"
+      ],
+      "id": "SINT_6743BAA8D969",
+      "tokens": [
+        "agrietarse",
+        "piel",
+        "puede",
+        "seca"
+      ]
+    },
+    {
+      "canonico": "placas engrosadas y enrojecidas con escamas plateadas",
+      "enfermedades": [
+        "Psoriasis"
+      ],
+      "frases_originales": [
+        "Placas engrosadas y enrojecidas con escamas plateadas"
+      ],
+      "id": "SINT_A47DEB1EFDF5",
+      "tokens": [
+        "engrosadas",
+        "enrojecidas",
+        "escamas",
+        "placas",
+        "plateadas"
+      ]
+    },
+    {
+      "canonico": "postura encorvada",
+      "enfermedades": [
+        "Osteoporosis"
+      ],
+      "frases_originales": [
+        "Postura encorvada"
+      ],
+      "id": "SINT_593270E847B5",
+      "tokens": [
+        "encorvada",
+        "postura"
+      ]
+    },
+    {
+      "canonico": "presion en la frente",
+      "enfermedades": [
+        "Sinusitis"
+      ],
+      "frases_originales": [
+        "Presión en la frente"
+      ],
+      "id": "SINT_1B9C4E99100F",
+      "tokens": [
+        "frente",
+        "presion"
+      ]
+    },
+    {
+      "canonico": "produccion frecuente de flema",
+      "enfermedades": [
+        "Enfermedad pulmonar obstructiva crónica"
+      ],
+      "frases_originales": [
+        "Producción frecuente de flema"
+      ],
+      "id": "SINT_679C346DA7B4",
+      "tokens": [
+        "flema",
+        "frecuente",
+        "produccion"
+      ]
+    },
+    {
+      "canonico": "rigidez matutina breve",
+      "enfermedades": [
+        "Osteoartritis o artrosis"
+      ],
+      "frases_originales": [
+        "Rigidez matutina breve"
+      ],
+      "id": "SINT_F37FEDB3A94E",
+      "tokens": [
+        "breve",
+        "matutina",
+        "rigidez"
+      ]
+    },
+    {
+      "canonico": "rigidez matutina prolongada",
+      "enfermedades": [
+        "Artritis reumatoide"
+      ],
+      "frases_originales": [
+        "Rigidez matutina prolongada"
+      ],
+      "id": "SINT_406A8AB28D93",
+      "tokens": [
+        "matutina",
+        "prolongada",
+        "rigidez"
+      ]
+    },
+    {
+      "canonico": "sarpullido",
+      "enfermedades": [
+        "Dengue"
+      ],
+      "frases_originales": [
+        "Sarpullido"
+      ],
+      "id": "SINT_78F20605FF8F",
+      "tokens": [
+        "sarpullido"
+      ]
+    },
+    {
+      "canonico": "sarpullido que evoluciona a ampollas con liquido",
+      "enfermedades": [
+        "Varicela"
+      ],
+      "frases_originales": [
+        "Sarpullido que evoluciona a ampollas con líquido"
+      ],
+      "id": "SINT_A5E928EF717E",
+      "tokens": [
+        "ampollas",
+        "evoluciona",
+        "liquido",
+        "sarpullido"
+      ]
+    },
+    {
+      "canonico": "sarpullido rojo que forma ampollas en franja",
+      "enfermedades": [
+        "Herpes zóster"
+      ],
+      "frases_originales": [
+        "Sarpullido rojo que forma ampollas en franja"
+      ],
+      "id": "SINT_6C090065A11B",
+      "tokens": [
+        "ampollas",
+        "forma",
+        "franja",
+        "rojo",
+        "sarpullido"
+      ]
+    },
+    {
+      "canonico": "secrecion del oido",
+      "enfermedades": [
+        "Otitis media"
+      ],
+      "frases_originales": [
+        "Secreción del oído"
+      ],
+      "id": "SINT_D0E6820DAF27",
+      "tokens": [
+        "oido",
+        "secrecion"
+      ]
+    },
+    {
+      "canonico": "secrecion del ojo",
+      "enfermedades": [
+        "Conjuntivitis"
+      ],
+      "frases_originales": [
+        "Secreción del ojo"
+      ],
+      "id": "SINT_654DE345539B",
+      "tokens": [
+        "ojo",
+        "secrecion"
+      ]
+    },
+    {
+      "canonico": "sed excesiva",
+      "enfermedades": [
+        "Diabetes mellitus tipo 2"
+      ],
+      "frases_originales": [
+        "Sed excesiva"
+      ],
+      "id": "SINT_A70105EDAD8E",
+      "tokens": [
+        "excesiva",
+        "sed"
+      ]
+    },
+    {
+      "canonico": "sensacion arenosa en el ojo",
+      "enfermedades": [
+        "Conjuntivitis"
+      ],
+      "frases_originales": [
+        "Sensación arenosa en el ojo"
+      ],
+      "id": "SINT_3C6D3E30BDB0",
+      "tokens": [
+        "arenosa",
+        "ojo",
+        "sensacion"
+      ]
+    },
+    {
+      "canonico": "sensacion de calor en articulaciones",
+      "enfermedades": [
+        "Artritis reumatoide"
+      ],
+      "frases_originales": [
+        "Sensación de calor en articulaciones"
+      ],
+      "id": "SINT_ABF63137980A",
+      "tokens": [
+        "articulaciones",
+        "calor",
+        "sensacion"
+      ]
+    },
+    {
+      "canonico": "sensacion de calor en la zona",
+      "enfermedades": [
+        "Trombosis venosa profunda"
+      ],
+      "frases_originales": [
+        "Sensación de calor en la zona"
+      ],
+      "id": "SINT_F61E29FB5780",
+      "tokens": [
+        "calor",
+        "sensacion",
+        "zona"
+      ]
+    },
+    {
+      "canonico": "sensacion de pesadez",
+      "enfermedades": [
+        "Colitis o inflamación intestinal",
+        "Hígado graso no alcohólico"
+      ],
+      "frases_originales": [
+        "Sensación de pesadez"
+      ],
+      "id": "SINT_28423F2F3DA6",
+      "tokens": [
+        "pesadez",
+        "sensacion"
+      ]
+    },
+    {
+      "canonico": "sensibilidad a la luz",
+      "enfermedades": [
+        "Migraña"
+      ],
+      "frases_originales": [
+        "Sensibilidad a la luz"
+      ],
+      "id": "SINT_42A0ED2F5972",
+      "tokens": [
+        "luz",
+        "sensibilidad"
+      ]
+    },
+    {
+      "canonico": "sensibilidad al frio",
+      "enfermedades": [
+        "Hipotiroidismo"
+      ],
+      "frases_originales": [
+        "Sensibilidad al frío"
+      ],
+      "id": "SINT_70BAA3502FDB",
+      "tokens": [
+        "frio",
+        "sensibilidad"
+      ]
+    },
+    {
+      "canonico": "sensibilidad al frio calor o dulces",
+      "enfermedades": [
+        "Caries dental"
+      ],
+      "frases_originales": [
+        "Sensibilidad al frío, calor o dulces"
+      ],
+      "id": "SINT_6C730E4E9CA9",
+      "tokens": [
+        "calor",
+        "dulces",
+        "frio",
+        "sensibilidad"
+      ]
+    },
+    {
+      "canonico": "sensibilidad en la zona",
+      "enfermedades": [
+        "Herpes labial"
+      ],
+      "frases_originales": [
+        "Sensibilidad en la zona"
+      ],
+      "id": "SINT_A7E71A0556BE",
+      "tokens": [
+        "sensibilidad",
+        "zona"
+      ]
+    },
+    {
+      "canonico": "silbidos al respirar",
+      "enfermedades": [
+        "Asma"
+      ],
+      "frases_originales": [
+        "Silbidos al respirar"
+      ],
+      "id": "SINT_73B6F7ACAA36",
+      "tokens": [
+        "respirar",
+        "silbidos"
+      ]
+    },
+    {
+      "canonico": "sueno poco reparador",
+      "enfermedades": [
+        "Fibromialgia"
+      ],
+      "frases_originales": [
+        "Sueño poco reparador"
+      ],
+      "id": "SINT_07D49D3123E8",
+      "tokens": [
+        "poco",
+        "reparador",
+        "sueno"
+      ]
+    },
+    {
+      "canonico": "tos",
+      "enfermedades": [
+        "COVID-19",
+        "Influenza (gripe)"
+      ],
+      "frases_originales": [
+        "Tos"
+      ],
+      "id": "SINT_76F762F26158",
+      "tokens": [
+        "tos"
+      ]
+    },
+    {
+      "canonico": "tos cronica",
+      "enfermedades": [
+        "Enfermedad pulmonar obstructiva crónica"
+      ],
+      "frases_originales": [
+        "Tos crónica"
+      ],
+      "id": "SINT_38840B1CC735",
+      "tokens": [
+        "cronica",
+        "tos"
+      ]
+    },
+    {
+      "canonico": "tos especialmente por la noche",
+      "enfermedades": [
+        "Asma"
+      ],
+      "frases_originales": [
+        "Tos, especialmente por la noche"
+      ],
+      "id": "SINT_BD1EFB2C1AE3",
+      "tokens": [
+        "especialmente",
+        "noche",
+        "tos"
+      ]
+    },
+    {
+      "canonico": "tos persistente",
+      "enfermedades": [
+        "Bronquitis"
+      ],
+      "frases_originales": [
+        "Tos persistente"
+      ],
+      "id": "SINT_A1D4D8C9757C",
+      "tokens": [
+        "persistente",
+        "tos"
+      ]
+    },
+    {
+      "canonico": "tos seca",
+      "enfermedades": [
+        "Influenza (gripe)"
+      ],
+      "frases_originales": [
+        "Tos seca"
+      ],
+      "id": "SINT_25E053C2ECE5",
+      "tokens": [
+        "seca",
+        "tos"
+      ]
+    },
+    {
+      "canonico": "tristeza persistente o animo bajo la mayor parte del dia",
+      "enfermedades": [
+        "Depresión"
+      ],
+      "frases_originales": [
+        "Tristeza persistente o ánimo bajo la mayor parte del día"
+      ],
+      "id": "SINT_48BFEEBBB180",
+      "tokens": [
+        "animo",
+        "bajo",
+        "dia",
+        "mayor",
+        "parte",
+        "persistente",
+        "tristeza"
+      ]
+    },
+    {
+      "canonico": "unas fragiles",
+      "enfermedades": [
+        "Anemia por deficiencia de hierro"
+      ],
+      "frases_originales": [
+        "Uñas frágiles"
+      ],
+      "id": "SINT_36087A0948B2",
+      "tokens": [
+        "fragiles"
+      ]
+    },
+    {
+      "canonico": "vision borrosa",
+      "enfermedades": [
+        "Diabetes mellitus tipo 2",
+        "Hipertensión arterial"
+      ],
+      "frases_originales": [
+        "Visión borrosa"
+      ],
+      "id": "SINT_233AC7E91A00",
+      "tokens": [
+        "borrosa",
+        "vision"
+      ]
+    },
+    {
+      "canonico": "vision de halos alrededor de luces",
+      "enfermedades": [
+        "Glaucoma"
+      ],
+      "frases_originales": [
+        "Visión de halos alrededor de luces"
+      ],
+      "id": "SINT_11E11419F350",
+      "tokens": [
+        "alrededor",
+        "halos",
+        "luces",
+        "vision"
+      ]
+    },
+    {
+      "canonico": "vision nublada o borrosa",
+      "enfermedades": [
+        "Cataratas"
+      ],
+      "frases_originales": [
+        "Visión nublada o borrosa"
+      ],
+      "id": "SINT_D4B306E0C098",
+      "tokens": [
+        "borrosa",
+        "nublada",
+        "vision"
+      ]
+    },
+    {
+      "canonico": "vomito",
+      "enfermedades": [
+        "Dengue",
+        "Gastroenteritis"
+      ],
+      "frases_originales": [
+        "Vómito"
+      ],
+      "id": "SINT_A9C6FEF5DC3F",
+      "tokens": [
+        "vomito"
+      ]
+    },
+    {
+      "canonico": "zumbido en los oidos",
+      "enfermedades": [
+        "Hipertensión arterial"
+      ],
+      "frases_originales": [
+        "Zumbido en los oídos"
+      ],
+      "id": "SINT_8EB4A09CDD0A",
+      "tokens": [
+        "oidos",
+        "zumbido"
+      ]
+    }
+  ],
+  "total_manifestaciones": 161,
+  "version": 1
+}

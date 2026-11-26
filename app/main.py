@@ -8,6 +8,7 @@ from fastapi import FastAPI, HTTPException
 from sqlalchemy import text
 from app.routers import pulsera
 from app.ia.iamedicamentos import endpoints as ia_medicamentos
+from app.ia.iasintomas import endpoints as ia_sintomas
 from app.database.connection import engine
 
 bearer_registro = HTTPBearer(auto_error=False)
@@ -24,6 +25,7 @@ app = FastAPI(
 )
 app.include_router(pulsera.router)
 app.include_router(ia_medicamentos.router)
+app.include_router(ia_sintomas.router)
 
 
 @app.get("/")

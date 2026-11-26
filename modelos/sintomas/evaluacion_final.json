@@ -1,0 +1,63 @@
+{
+    "modelo": "NeuroMedX_IA_Sintomas",
+    "version": 1,
+    "arquitectura": "MLP",
+    "framework": "TensorFlow",
+    "tipo_dataset": "sintetico_catalogo",
+    "total_enfermedades": 47,
+    "total_manifestaciones": 161,
+    "parametros_entrenables": 17583,
+    "particiones": {
+        "entrenamiento": 387,
+        "validacion": 96,
+        "prueba": 306
+    },
+    "entrenamiento": {
+        "epocas_ejecutadas": 394,
+        "mejor_epoca": 364,
+        "semilla": 42
+    },
+    "evaluacion_final": {
+        "muestras_evaluadas": 306,
+        "umbral": 0.2,
+        "exactitud_conjunto": 0.843137,
+        "precision_micro": 0.845109,
+        "recall_micro": 1.0,
+        "f1_micro": 0.916053,
+        "precision_macro": 0.948243,
+        "recall_macro": 1.0,
+        "f1_macro": 0.963981,
+        "verdaderos_positivos": 311,
+        "falsos_positivos": 57,
+        "falsos_negativos": 0,
+        "verdaderos_negativos": 14014,
+        "muestras_sin_prediccion": 0
+    },
+    "baseline": {
+        "permisivo": {
+            "exactitud": 0.3203,
+            "precision_micro": 0.2596,
+            "recall_micro": 1.0,
+            "f1_micro": 0.4122
+        },
+        "intermedio": {
+            "exactitud": 0.7549,
+            "precision_micro": 0.7775,
+            "recall_micro": 1.0,
+            "f1_micro": 0.8748
+        },
+        "estricto": {
+            "exactitud": 1.0,
+            "precision_micro": 1.0,
+            "recall_micro": 1.0,
+            "f1_micro": 1.0
+        }
+    },
+    "validacion_clinica": false,
+    "limitaciones": [
+        "Dataset sintetico generado desde el catalogo.",
+        "Sin datos independientes de pacientes reales.",
+        "El baseline estricto reproduce las reglas del etiquetado.",
+        "Las puntuaciones no son probabilidades clinicas."
+    ]
+}

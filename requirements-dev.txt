@@ -1,0 +1,6 @@
+-r requirements.txt
+
+# Entrenamiento y evaluacion
+scikit-learn==1.9.1
+iterative-stratification==0.1.9
+httpx==0.28.1
