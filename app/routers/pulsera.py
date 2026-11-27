@@ -1,8 +1,12 @@
-
 from datetime import datetime, timezone
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
+
+from app.seguridad.acceso import (
+    verificar_acceso_mediciones_pulsera
+)
+
 
 router = APIRouter(
     prefix="/pulsera",
@@ -41,7 +45,7 @@ class MedicionPulsera(BaseModel):
     giro_z: float | None = None
 
 
-# Almacenamiento temporal en memoria
+# Almacenamiento experimental en memoria
 mediciones: list[dict] = []
 
 
@@ -50,9 +54,7 @@ def inicio():
     return {
         "proyecto": "NeuroMedX Connect",
         "estado": "API de pulsera funcionando",
-        "version": "1.1.0",
-        "documentacion": "/docs",
-        "ultima_medicion": "/pulsera/mediciones/ultima",
+        "version": "1.1.0"
     }
 
 
@@ -61,7 +63,12 @@ def salud():
     return {"estado": "activo"}
 
 
-@router.post("/mediciones")
+@router.post(
+    "/mediciones",
+    dependencies=[
+        Depends(verificar_acceso_mediciones_pulsera)
+    ]
+)
 def recibir_medicion(datos: MedicionPulsera):
     registro = datos.model_dump()
 
@@ -74,24 +81,18 @@ def recibir_medicion(datos: MedicionPulsera):
     if len(mediciones) > 1000:
         del mediciones[:-1000]
 
-    print("\n========== NUEVA MEDICION ==========")
-    print("Dispositivo:", registro["dispositivo"])
-    print("MAX30102 conectado:", registro["sensor_max30102"])
-    print("Lectura válida:", registro["pulso_valido"])
-    print("Frecuencia cardiaca:", registro["frecuencia_cardiaca"])
-    print("SpO2:", registro["spo2"])
-    print("IR:", registro["ir"])
-    print("Rojo:", registro["rojo"])
-    print("Temperatura:", registro["temperatura"])
-    print("====================================\n")
-
     return {
         "mensaje": "Medicion recibida correctamente",
         "medicion": registro,
     }
 
 
-@router.get("/mediciones")
+@router.get(
+    "/mediciones",
+    dependencies=[
+        Depends(verificar_acceso_mediciones_pulsera)
+    ]
+)
 def consultar_mediciones():
     return {
         "total": len(mediciones),
@@ -99,7 +100,12 @@ def consultar_mediciones():
     }
 
 
-@router.get("/mediciones/ultima")
+@router.get(
+    "/mediciones/ultima",
+    dependencies=[
+        Depends(verificar_acceso_mediciones_pulsera)
+    ]
+)
 def consultar_ultima_medicion():
     if not mediciones:
         return {

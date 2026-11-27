@@ -24,6 +24,13 @@ def obtener_usuario_autenticado(
         credentials.credentials
     )
 
+    # Exigir correo electrónico verificado
+    if datos_firebase.get("email_verified") is not True:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Debes verificar tu correo electrónico para utilizar NeuroMedX Connect"
+        )
+
     firebase_uid = datos_firebase.get("uid")
 
     if not firebase_uid:

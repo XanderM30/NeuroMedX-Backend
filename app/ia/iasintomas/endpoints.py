@@ -3,6 +3,8 @@ from typing import Any
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 
+from app.seguridad.politicas import limitar_sintomas
+from app.seguridad.concurrencia import controlar_tensorflow
 from app.ia.iasintomas.acceso import verificar_acceso_experimental
 from app.ia.iasintomas.inferencia import (
     analizar_sintomas,
@@ -46,74 +48,88 @@ class RespuestaAnalisis(BaseModel):
 def comprobar_salud(
     usuario: dict = Depends(verificar_acceso_experimental),
 ):
-    try:
-        recursos = cargar_recursos()
+    limitar_sintomas(usuario["firebase_uid"])
 
-        return {
-            "servicio": "IA de sintomas",
-            "estado": "operativo",
-            "framework": "TensorFlow",
-            "arquitectura": "MLP",
-            "manifestaciones": len(
-                recursos["catalogo"]["manifestaciones"]
-            ),
-            "enfermedades": len(
-                recursos["configuracion"]["enfermedades"]
-            ),
-            "combinaciones": len(
-                recursos["combinaciones_conocidas"]
-            ),
-            "catalogo_congelado": True,
-            "validacion_clinica": False,
-        }
+    with controlar_tensorflow():
+        try:
+            recursos = cargar_recursos()
 
-    except Exception:
-        raise HTTPException(
-            status_code=503,
-            detail="El servicio de sintomas no esta disponible.",
-        )
+            return {
+                "servicio": "IA de sintomas",
+                "estado": "operativo",
+                "framework": "TensorFlow",
+                "arquitectura": "MLP",
+                "manifestaciones": len(
+                    recursos["catalogo"]["manifestaciones"]
+                ),
+                "enfermedades": len(
+                    recursos["configuracion"]["enfermedades"]
+                ),
+                "combinaciones": len(
+                    recursos["combinaciones_conocidas"]
+                ),
+                "catalogo_congelado": True,
+                "validacion_clinica": False,
+            }
+
+        except Exception:
+            raise HTTPException(
+                status_code=503,
+                detail="El servicio de sintomas no esta disponible.",
+            )
 
 
 @router.get("/catalogo")
 def obtener_catalogo(
     usuario: dict = Depends(verificar_acceso_experimental),
 ):
-    try:
-        recursos = cargar_recursos()
+    limitar_sintomas(usuario["firebase_uid"])
 
-        manifestaciones = [
-            {
-                "id": item["id"],
-                "nombre": item["canonico"],
+    with controlar_tensorflow():
+        try:
+            recursos = cargar_recursos()
+
+            manifestaciones = [
+                {
+                    "id": item["id"],
+                    "nombre": item["canonico"],
+                }
+                for item in recursos["catalogo"]["manifestaciones"]
+            ]
+
+            return {
+                "estado": "correcto",
+                "version": recursos["configuracion"][
+                    "catalogo_congelado"
+                ]["version"],
+                "total_manifestaciones": len(manifestaciones),
+                "manifestaciones": manifestaciones,
+                "validacion_clinica": False,
             }
-            for item in recursos["catalogo"]["manifestaciones"]
-        ]
 
-        return {
-            "estado": "correcto",
-            "version": recursos["configuracion"][
-                "catalogo_congelado"
-            ]["version"],
-            "total_manifestaciones": len(manifestaciones),
-            "manifestaciones": manifestaciones,
-            "validacion_clinica": False,
-        }
-
-    except Exception:
-        raise HTTPException(
-            status_code=503,
-            detail="El catalogo no esta disponible.",
-        )
+        except Exception:
+            raise HTTPException(
+                status_code=503,
+                detail="El catalogo no esta disponible.",
+            )
 
 
 @router.post(
     "/analizar",
     response_model=RespuestaAnalisis,
+    responses={
+        401: {"description": "Autenticacion requerida."},
+        403: {"description": "Usuario no autorizado."},
+        429: {"description": "Limite de solicitudes superado."},
+        503: {"description": "Servicio no disponible."},
+    },
 )
 def analizar(
     solicitud: SolicitudAnalisis,
     usuario: dict = Depends(verificar_acceso_experimental),
 ):
+    limitar_sintomas(usuario["firebase_uid"])
+
     texto = solicitud.texto.strip()
 
     if not texto:
@@ -122,17 +138,18 @@ def analizar(
             detail="El texto no puede estar vacio.",
         )
 
-    try:
-        resultado = analizar_sintomas(texto)
+    with controlar_tensorflow():
+        try:
+            resultado = analizar_sintomas(texto)
 
-        return {
-            "estado": "correcto",
-            "usuario_id": str(usuario["id"]),
-            "resultado": resultado,
-        }
+            return {
+                "estado": "correcto",
+                "usuario_id": str(usuario["id"]),
+                "resultado": resultado,
+            }
 
-    except Exception:
-        raise HTTPException(
-            status_code=503,
-            detail="El servicio de analisis no esta disponible.",
-        )
+        except Exception:
+            raise HTTPException(
+                status_code=503,
+                detail="El servicio de analisis no esta disponible.",
+            )

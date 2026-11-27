@@ -4,6 +4,8 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, Field
 
 from app.auth.dependencies import obtener_usuario_autenticado
+from app.seguridad.politicas import limitar_medicamentos
+from app.seguridad.concurrencia import controlar_beto
 from modelos.BETO.detector_medicamentos import detectar_medicamentos
 
 
@@ -49,36 +51,43 @@ class RespuestaDeteccion(BaseModel):
     "/detectar",
     response_model=RespuestaDeteccion,
     responses={
-        400: {"description": "Solicitud no v?lida para el detector."},
-        401: {"description": "Se requiere autenticaci?n v?lida."},
+        400: {"description": "Solicitud no valida para el detector."},
+        401: {"description": "Se requiere autenticacion valida."},
         403: {"description": "El usuario no tiene acceso al servicio."},
-        503: {"description": "El servicio de detecci?n o la base de datos no est?n disponibles."}
+        429: {"description": "Limite de solicitudes superado."},
+        503: {"description": "El servicio no esta disponible."}
     }
 )
 def detectar(
     solicitud: SolicitudDeteccion,
     usuario: dict = Depends(obtener_usuario_autenticado)
 ):
-    try:
-        resultado = detectar_medicamentos(
-            texto=solicitud.texto,
-            umbral_confianza=solicitud.umbral_confianza
-        )
+    # Limitar solicitudes por UID verificado
+    limitar_medicamentos(usuario["firebase_uid"])
 
-        return {
-            "estado": "correcto",
-            "usuario_id": str(usuario["id"]),
-            "resultado": resultado
-        }
+    # Controlar operaciones simultaneas
+    with controlar_beto():
 
-    except (TypeError, ValueError) as error:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(error)
-        )
+        try:
+            resultado = detectar_medicamentos(
+                texto=solicitud.texto,
+                umbral_confianza=solicitud.umbral_confianza
+            )
 
-    except Exception:
-        raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="El servicio de detecci?n de medicamentos no est? disponible."
-        )
+            return {
+                "estado": "correcto",
+                "usuario_id": str(usuario["id"]),
+                "resultado": resultado
+            }
+
+        except (TypeError, ValueError) as error:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=str(error)
+            )
+
+        except Exception:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="El servicio de deteccion de medicamentos no esta disponible."
+            )

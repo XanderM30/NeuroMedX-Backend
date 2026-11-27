@@ -3,6 +3,7 @@ from fastapi import HTTPException, status
 
 from app.auth.firebase import verificar_token_firebase
 from app.database.usuarios import crear_usuario_paciente
+from app.seguridad.politicas import limitar_registro
 
 
 def registrar_paciente_firebase(
@@ -18,6 +19,13 @@ def registrar_paciente_firebase(
     # Verificar el token de Firebase
     datos_firebase = verificar_token_firebase(token)
 
+    # Exigir correo electrónico verificado
+    if datos_firebase.get("email_verified") is not True:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Debes verificar tu correo electrónico antes de registrarte"
+        )
+
     firebase_uid = datos_firebase.get("uid")
     correo = datos_firebase.get("email")
 
@@ -26,6 +34,9 @@ def registrar_paciente_firebase(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="La identidad de Firebase no contiene UID o correo válido"
         )
+
+    # Limitar solicitudes por UID verificado
+    limitar_registro(firebase_uid)
 
     # Registrar usuario y perfil de paciente
     try:

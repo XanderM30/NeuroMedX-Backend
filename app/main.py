@@ -1,15 +1,22 @@
 from pydantic import BaseModel, Field
-from fastapi import Response, status
+from fastapi import FastAPI, HTTPException, Depends, Response, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from app.database.registro import registrar_paciente_firebase
-from app.auth.dependencies import obtener_usuario_autenticado
-from fastapi import Depends
-from fastapi import FastAPI, HTTPException
 from sqlalchemy import text
+
+from app.database.registro import registrar_paciente_firebase
+from app.database.connection import engine
+from app.auth.dependencies import obtener_usuario_autenticado
+
 from app.routers import pulsera
 from app.ia.iamedicamentos import endpoints as ia_medicamentos
 from app.ia.iasintomas import endpoints as ia_sintomas
-from app.database.connection import engine
+
+from app.seguridad.configuracion import DOCUMENTACION_HABILITADA
+from app.seguridad.acceso import verificar_acceso_salud_base_datos
+from app.seguridad.politicas import limitar_perfil
+from app.seguridad.middleware import proteger_solicitudes
+from app.seguridad.tamano_solicitudes import LimitarTamanoSolicitudes
+
 
 bearer_registro = HTTPBearer(auto_error=False)
 
@@ -18,16 +25,32 @@ class RegistroPaciente(BaseModel):
     nombre: str = Field(min_length=1, max_length=100)
     apellido: str = Field(min_length=1, max_length=100)
 
+
+# Configuracion principal de FastAPI
 app = FastAPI(
     title="NeuroMedX Connect API",
     description="API principal de NeuroMedX Connect",
-    version="1.0.0"
+    version="1.0.0",
+    docs_url="/docs" if DOCUMENTACION_HABILITADA else None,
+    redoc_url="/redoc" if DOCUMENTACION_HABILITADA else None,
+    openapi_url="/openapi.json" if DOCUMENTACION_HABILITADA else None
 )
+
+
+# Restriccion del tamano de solicitudes HTTP
+app.add_middleware(LimitarTamanoSolicitudes)
+
+# Middleware general de seguridad
+app.middleware("http")(proteger_solicitudes)
+
+
+# Registro de modulos
 app.include_router(pulsera.router)
 app.include_router(ia_medicamentos.router)
 app.include_router(ia_sintomas.router)
 
 
+# Endpoint publico principal
 @app.get("/")
 def inicio():
     return {
@@ -37,6 +60,7 @@ def inicio():
     }
 
 
+# Estado general de la API
 @app.get("/salud")
 def comprobar_salud():
     return {
@@ -45,7 +69,11 @@ def comprobar_salud():
     }
 
 
-@app.get("/salud/base-datos")
+# Estado interno de PostgreSQL
+@app.get(
+    "/salud/base-datos",
+    dependencies=[Depends(verificar_acceso_salud_base_datos)]
+)
 def comprobar_base_datos():
     try:
         with engine.connect() as connection:
@@ -64,10 +92,15 @@ def comprobar_base_datos():
             status_code=503,
             detail="No fue posible conectar con PostgreSQL"
         )
+
+
+# Consulta del perfil autenticado
 @app.get("/usuarios/me")
 def obtener_perfil(
     usuario: dict = Depends(obtener_usuario_autenticado)
 ):
+    limitar_perfil(usuario["firebase_uid"])
+
     return {
         "mensaje": "Autenticación correcta",
         "usuario": {
@@ -78,6 +111,9 @@ def obtener_perfil(
             "rol": usuario["rol"]
         }
     }
+
+
+# Registro de pacientes mediante Firebase
 @app.post(
     "/usuarios/registro-paciente",
     status_code=status.HTTP_201_CREATED
@@ -85,7 +121,9 @@ def obtener_perfil(
 def registrar_paciente(
     solicitud: RegistroPaciente,
     response: Response,
-    credentials: HTTPAuthorizationCredentials | None = Depends(bearer_registro)
+    credentials: HTTPAuthorizationCredentials | None = Depends(
+        bearer_registro
+    )
 ):
     if credentials is None:
         raise HTTPException(
