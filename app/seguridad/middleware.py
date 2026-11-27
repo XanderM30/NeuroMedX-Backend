@@ -1,7 +1,8 @@
-from fastapi import Request, HTTPException
+﻿from fastapi import Request, HTTPException
 from fastapi.responses import JSONResponse
 
 from app.seguridad.limitador import limitador
+from app.seguridad.confianza_proxy import obtener_ip_cliente
 from app.seguridad.configuracion import (
     LIMITE_GENERAL_IP,
     VENTANA_SOLICITUDES,
@@ -10,14 +11,10 @@ from app.seguridad.configuracion import (
 
 async def proteger_solicitudes(request: Request, call_next):
 
-    # Obtener la direccion del cliente observada por el servidor
-    ip_cliente = (
-        request.client.host
-        if request.client
-        else "desconocida"
-    )
-
     try:
+        # Obtener la IP directa o validada por el proxy
+        ip_cliente = obtener_ip_cliente(request)
+
         # Aplicar el limite antes de la autenticacion
         limitador.verificar(
             clave=f"general:{ip_cliente}",
