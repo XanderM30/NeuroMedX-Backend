@@ -1,4 +1,4 @@
-﻿import pytest
+import pytest
 import httpx
 
 from fastapi.testclient import TestClient
@@ -175,3 +175,79 @@ def test_barra_final_no_autorizada(cliente):
     )
 
     assert respuesta.status_code == 404
+
+@pytest.mark.parametrize("metodo,ruta", [
+    ("GET", "/usuarios/registro-medico"),
+    ("PUT", "/usuarios/registro-medico"),
+    ("PATCH", "/usuarios/registro-medico"),
+    ("DELETE", "/usuarios/registro-medico"),
+    ("HEAD", "/usuarios/registro-medico"),
+
+    ("POST", "/medicos/me"),
+    ("PUT", "/medicos/me"),
+    ("PATCH", "/medicos/me"),
+    ("DELETE", "/medicos/me"),
+    ("HEAD", "/medicos/me"),
+
+    ("GET", "/medicos"),
+    ("GET", "/medicos/123"),
+    ("GET", "/medicos/verificar"),
+    ("POST", "/medicos/verificar"),
+
+    ("POST", "/usuarios/registro-medico/"),
+    ("GET", "/medicos/me/"),
+])
+def test_acceso_medico_no_autorizado(
+    cliente,
+    metodo,
+    ruta,
+):
+
+    respuesta = cliente.request(
+        metodo,
+        ruta,
+        headers=CABECERAS,
+        follow_redirects=False,
+    )
+
+    assert respuesta.status_code == 404
+
+
+@pytest.mark.parametrize("metodo,ruta", [
+    ("GET", "/medicos/me?usuario_id=123"),
+    ("GET", "/medicos/me?medico_id=123"),
+    ("POST", "/usuarios/registro-medico?rol=administrador"),
+    ("POST", "/usuarios/registro-medico?estado=verificado"),
+])
+def test_parametros_medicos_no_autorizados(
+    cliente,
+    metodo,
+    ruta,
+):
+
+    respuesta = cliente.request(
+        metodo,
+        ruta,
+        headers=CABECERAS,
+    )
+
+    assert respuesta.status_code == 400
+
+
+@pytest.mark.parametrize("metodo,ruta", [
+    ("GET", "/medicos/%6de"),
+    ("POST", "/usuarios/registro-%6dedico"),
+])
+def test_rutas_medicas_codificadas(
+    cliente,
+    metodo,
+    ruta,
+):
+
+    respuesta = cliente.request(
+        metodo,
+        ruta,
+        headers=CABECERAS,
+    )
+
+    assert respuesta.status_code == 400

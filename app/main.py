@@ -3,9 +3,19 @@ from fastapi import FastAPI, HTTPException, Depends, Response, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy import text
 
-from app.database.registro import registrar_paciente_firebase
+from app.database.registro import (
+    registrar_paciente_firebase,
+    registrar_medico_firebase,
+)
+
+from app.esquemas.medicos import (
+    RegistroMedico,
+    RespuestaRegistroMedico,
+)
 from app.database.connection import engine
 from app.auth.dependencies import obtener_usuario_autenticado
+from app.auth.medicos import obtener_medico_autenticado
+from app.esquemas.medicos import RespuestaPerfilMedico
 
 from app.routers import pulsera
 from app.ia.iamedicamentos import endpoints as ia_medicamentos
@@ -150,3 +160,89 @@ def registrar_paciente(
         response.status_code = status.HTTP_200_OK
 
     return resultado
+
+# Registro de medicos mediante Firebase
+@app.post(
+    "/usuarios/registro-medico",
+    status_code=status.HTTP_201_CREATED,
+    response_model=RespuestaRegistroMedico,
+    responses={
+        200: {
+            "model": RespuestaRegistroMedico,
+            "description": "Medico registrado previamente",
+        },
+        401: {"description": "Autenticacion requerida"},
+        403: {"description": "Acceso no autorizado"},
+        409: {"description": "Conflicto de registro"},
+        429: {"description": "Limite de solicitudes alcanzado"},
+        503: {"description": "Servicio temporalmente no disponible"},
+    },
+)
+def registrar_medico(
+    solicitud: RegistroMedico,
+    response: Response,
+    credentials: HTTPAuthorizationCredentials | None = Depends(
+        bearer_registro
+    ),
+):
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Se requiere autenticacion de Firebase",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    resultado = registrar_medico_firebase(
+        token=credentials.credentials,
+        nombre=solicitud.nombre,
+        apellido=solicitud.apellido,
+        cedula_profesional=solicitud.cedula_profesional,
+        especialidad=solicitud.especialidad,
+        institucion_formacion=solicitud.institucion_formacion,
+    )
+
+    if resultado["existente"]:
+        response.status_code = status.HTTP_200_OK
+
+    response.headers["Cache-Control"] = "no-store"
+
+    return resultado
+
+# Consulta del perfil medico autenticado
+@app.get(
+    "/medicos/me",
+    response_model=RespuestaPerfilMedico,
+    responses={
+        401: {"description": "Autenticacion requerida"},
+        403: {"description": "Acceso no autorizado"},
+        429: {"description": "Limite de solicitudes alcanzado"},
+        503: {"description": "Servicio temporalmente no disponible"},
+    },
+)
+def obtener_perfil_medico(
+    response: Response,
+    perfil: dict = Depends(obtener_medico_autenticado),
+):
+    usuario = perfil["usuario"]
+    medico = perfil["medico"]
+
+    response.headers["Cache-Control"] = "no-store"
+
+    return {
+        "usuario": {
+            "id": usuario["id"],
+            "nombre": usuario["nombre"],
+            "apellido": usuario["apellido"],
+            "correo": usuario["correo"],
+            "rol": usuario["rol"],
+            "estado_cuenta": usuario["estado"],
+        },
+        "medico": {
+            "id": medico["id"],
+            "cedula_profesional": medico["cedula_profesional"],
+            "especialidad": medico["especialidad"],
+            "institucion_formacion": medico["institucion_formacion"],
+            "estado_verificacion": medico["estado_verificacion"],
+            "fecha_registro": medico["fecha_registro"],
+        },
+    }

@@ -11,6 +11,7 @@ from app.seguridad.configuracion import (
 # Limites expresados en bytes
 LIMITES_POR_RUTA = {
     "/usuarios/registro-paciente": 4 * 1024,
+    "/usuarios/registro-medico": 4 * 1024,
     "/ia/medicamentos/detectar": 128 * 1024,
     "/ia/sintomas/analizar": 32 * 1024,
     "/pulsera/mediciones": 16 * 1024,

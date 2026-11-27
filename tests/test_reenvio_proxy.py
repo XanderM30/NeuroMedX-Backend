@@ -364,3 +364,270 @@ def test_conservar_retry_after_error_503(entorno):
     }
 
     assert "Informacion interna ficticia" not in respuesta.text
+
+@pytest.mark.parametrize("metodo,ruta", [
+    ("POST", "/usuarios/registro-medico"),
+    ("GET", "/medicos/me"),
+])
+def test_reenvio_medico_autorizado(
+    entorno,
+    metodo,
+    ruta,
+):
+
+    cliente, solicitudes, configuracion = entorno
+
+    configuracion["status"] = (
+        201 if metodo == "POST" else 200
+    )
+
+    cuerpo = b"{}" if metodo == "POST" else b""
+
+    respuesta = cliente.request(
+        metodo,
+        ruta,
+        headers=CABECERAS,
+        content=cuerpo,
+    )
+
+    assert respuesta.status_code == (
+        configuracion["status"]
+    )
+
+    assert len(solicitudes) == 1
+
+    solicitud = solicitudes[0]
+
+    assert solicitud.method == metodo
+
+    assert str(solicitud.url) == (
+        servidor.URL_BACKEND + ruta
+    )
+
+    assert solicitud.content == cuerpo
+
+    assert solicitud.headers["authorization"] == (
+        "Bearer token-ficticio"
+    )
+
+    assert respuesta.headers["cache-control"] == "no-store"
+
+
+@pytest.mark.parametrize("metodo,ruta", [
+    ("POST", "/usuarios/registro-medico"),
+    ("GET", "/medicos/me"),
+])
+def test_cabeceras_medicas_falsificadas(
+    entorno,
+    metodo,
+    ruta,
+):
+
+    cliente, solicitudes, _ = entorno
+
+    respuesta = cliente.request(
+        metodo,
+        ruta,
+        headers={
+            **CABECERAS,
+            "x-neuromedx-client-ip": "203.0.113.99",
+            "x-neuromedx-proxy-key": "clave-falsa",
+            "x-forwarded-for": "203.0.113.99",
+            "x-real-ip": "203.0.113.99",
+            "cookie": "sesion=ficticia",
+        },
+        content=b"{}" if metodo == "POST" else b"",
+    )
+
+    assert respuesta.status_code == 200
+
+    assert len(solicitudes) == 1
+
+    cabeceras = solicitudes[0].headers
+
+    assert cabeceras["x-neuromedx-client-ip"] == (
+        "203.0.113.25"
+    )
+
+    assert cabeceras["x-neuromedx-proxy-key"] == (
+        CLAVE_PRUEBA
+    )
+
+    assert "x-forwarded-for" not in cabeceras
+    assert "x-real-ip" not in cabeceras
+    assert "cf-connecting-ip" not in cabeceras
+    assert "cookie" not in cabeceras
+
+
+def test_registro_medico_limite_exacto(entorno):
+
+    cliente, solicitudes, _ = entorno
+
+    cuerpo = (
+        b'{"dato":"' +
+        b"a" * 4085 +
+        b'"}'
+    )
+
+    assert len(cuerpo) == 4096
+
+    respuesta = cliente.post(
+        "/usuarios/registro-medico",
+        headers=CABECERAS,
+        content=cuerpo,
+    )
+
+    assert respuesta.status_code == 200
+    assert len(solicitudes) == 1
+    assert solicitudes[0].content == cuerpo
+
+
+@pytest.mark.parametrize("tamano", [
+    4097,
+    8192,
+    16384,
+])
+def test_registro_medico_excede_limite(
+    entorno,
+    tamano,
+):
+
+    cliente, solicitudes, _ = entorno
+
+    cuerpo = (
+        b'{"dato":"' +
+        b"a" * (tamano - 11) +
+        b'"}'
+    )
+
+    assert len(cuerpo) == tamano
+
+    respuesta = cliente.post(
+        "/usuarios/registro-medico",
+        headers=CABECERAS,
+        content=cuerpo,
+    )
+
+    assert respuesta.status_code == 413
+
+    assert solicitudes == []
+
+
+def test_perfil_medico_con_cuerpo_rechazado(entorno):
+
+    cliente, solicitudes, _ = entorno
+
+    respuesta = cliente.request(
+        "GET",
+        "/medicos/me",
+        headers=CABECERAS,
+        content=b"{}",
+    )
+
+    assert respuesta.status_code == 413
+
+    assert solicitudes == []
+
+
+@pytest.mark.parametrize("metodo,ruta", [
+    ("POST", "/usuarios/registro-medico"),
+    ("GET", "/medicos/me"),
+])
+@pytest.mark.parametrize("codigo", [
+    401, 403, 429, 503,
+])
+def test_conservar_errores_medicos(
+    entorno,
+    metodo,
+    ruta,
+    codigo,
+):
+
+    cliente, solicitudes, configuracion = entorno
+
+    configuracion["status"] = codigo
+
+    respuesta = cliente.request(
+        metodo,
+        ruta,
+        headers=CABECERAS,
+        content=b"{}" if metodo == "POST" else b"",
+    )
+
+    assert respuesta.status_code == codigo
+    assert len(solicitudes) == 1
+    assert respuesta.headers["cache-control"] == "no-store"
+
+
+@pytest.mark.parametrize("codigo,espera", [
+    (429, "60"),
+    (503, "5"),
+])
+def test_registro_medico_retry_after(
+    entorno,
+    codigo,
+    espera,
+):
+
+    cliente, solicitudes, configuracion = entorno
+
+    configuracion["status"] = codigo
+    configuracion["headers"]["retry-after"] = espera
+
+    respuesta = cliente.post(
+        "/usuarios/registro-medico",
+        headers=CABECERAS,
+        content=b"{}",
+    )
+
+    assert respuesta.status_code == codigo
+
+    assert respuesta.headers["retry-after"] == espera
+
+    assert len(solicitudes) == 1
+
+
+@pytest.mark.parametrize("metodo,ruta", [
+    ("POST", "/usuarios/registro-medico"),
+    ("GET", "/medicos/me"),
+])
+def test_ocultar_informacion_interna_medica(
+    entorno,
+    metodo,
+    ruta,
+):
+
+    cliente, _, configuracion = entorno
+
+    configuracion["status"] = 503
+
+    configuracion["contenido"] = (
+        b'{"detail":"Informacion interna ficticia"}'
+    )
+
+    configuracion["headers"].update({
+        "set-cookie": "sesion=ficticia",
+        "x-neuromedx-proxy-key": CLAVE_PRUEBA,
+        "x-internal-server": "servidor-privado",
+    })
+
+    respuesta = cliente.request(
+        metodo,
+        ruta,
+        headers=CABECERAS,
+        content=b"{}" if metodo == "POST" else b"",
+    )
+
+    assert respuesta.status_code == 503
+
+    assert respuesta.json() == {
+        "detail": "Servicio temporalmente no disponible."
+    }
+
+    assert "Informacion interna ficticia" not in respuesta.text
+
+    assert "set-cookie" not in respuesta.headers
+    assert "x-neuromedx-proxy-key" not in respuesta.headers
+    assert "x-internal-server" not in respuesta.headers
+
+    assert respuesta.headers["cache-control"] == "no-store"

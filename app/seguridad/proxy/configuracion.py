@@ -1,4 +1,4 @@
-﻿import os
+import os
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -27,6 +27,8 @@ RUTAS_PERMITIDAS = frozenset({
     ("GET", "/salud"),
     ("GET", "/usuarios/me"),
     ("POST", "/usuarios/registro-paciente"),
+    ("POST", "/usuarios/registro-medico"),
+    ("GET", "/medicos/me"),
     ("POST", "/ia/medicamentos/detectar"),
 })
 
@@ -37,6 +39,7 @@ RUTAS_PERMITIDAS = frozenset({
 
 LIMITES_CUERPO = {
     "/usuarios/registro-paciente": 4 * 1024,
+    "/usuarios/registro-medico": 4 * 1024,
     "/ia/medicamentos/detectar": 128 * 1024,
 }
 
