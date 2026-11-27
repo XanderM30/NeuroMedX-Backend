@@ -1,6 +1,7 @@
 import os
 import re
 import asyncio
+from pathlib import Path
 
 import anyio
 import httpx
@@ -27,7 +28,15 @@ from app.seguridad.proxy.cabeceras import (
     preparar_cabeceras,
 )
 
+from app.seguridad.proxy.mantenimiento import (
+    servicio_habilitado,
+)
+
 load_dotenv()
+
+INDICADOR_PROXY = Path(
+    r"C:\NeuroMedX-AutoUpdate\proxy-habilitado.flag"
+)
 
 CLAVE_INTERNA = os.getenv("PROXY_CLAVE_INTERNA", "")
 
@@ -85,6 +94,20 @@ async def reenviar(request: Request, ruta: str):
 
     if request.scope.get("query_string"):
         return error(400, "Parametros no permitidos.")
+
+    # Verificar autorizacion de funcionamiento
+    if not servicio_habilitado(INDICADOR_PROXY):
+        return JSONResponse(
+            status_code=503,
+            content={
+                "detail": "Servicio temporalmente no disponible."
+            },
+            headers={
+                "Cache-Control": "no-store",
+                "Retry-After": "60",
+                "X-Content-Type-Options": "nosniff",
+            },
+        )
 
     # 4. Verificar configuracion interna
     if not re.fullmatch(r"[0-9a-f]{64}", CLAVE_INTERNA):
