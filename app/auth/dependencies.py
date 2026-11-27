@@ -69,7 +69,10 @@ def obtener_usuario_autenticado(
     if usuario is None:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="El usuario no tiene un perfil registrado en NeuroMedX Connect"
+            detail="El usuario no tiene un perfil registrado en NeuroMedX Connect",
+            headers={
+                "X-NeuroMedX-Error": "USUARIO_NO_REGISTRADO",
+            },
         )
 
     if not usuario["estado"]:

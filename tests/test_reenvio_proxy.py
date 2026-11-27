@@ -631,3 +631,146 @@ def test_ocultar_informacion_interna_medica(
     assert "x-internal-server" not in respuesta.headers
 
     assert respuesta.headers["cache-control"] == "no-store"
+
+
+
+# ==========================================
+# IDENTIFICADOR DE REGISTRO INCOMPLETO
+# ==========================================
+
+@pytest.mark.parametrize(
+    "metodo,ruta,estado,valor,esperado",
+    [
+        (
+            "GET", "/medicos/me", 403,
+            "USUARIO_NO_REGISTRADO", True,
+        ),
+        (
+            "GET", "/medicos/me", 403,
+            "CUENTA_DESACTIVADA", False,
+        ),
+        (
+            "GET", "/medicos/me", 403,
+            "IDENTIFICADOR_DESCONOCIDO", False,
+        ),
+        (
+            "GET", "/medicos/me", 403,
+            "", False,
+        ),
+        (
+            "GET", "/medicos/me", 200,
+            "USUARIO_NO_REGISTRADO", False,
+        ),
+        (
+            "GET", "/medicos/me", 401,
+            "USUARIO_NO_REGISTRADO", False,
+        ),
+        (
+            "GET", "/medicos/me", 429,
+            "USUARIO_NO_REGISTRADO", False,
+        ),
+        (
+            "GET", "/medicos/me", 503,
+            "USUARIO_NO_REGISTRADO", False,
+        ),
+        (
+            "GET", "/usuarios/me", 403,
+            "USUARIO_NO_REGISTRADO", False,
+        ),
+        (
+            "GET", "/salud", 403,
+            "USUARIO_NO_REGISTRADO", False,
+        ),
+        (
+            "POST", "/usuarios/registro-medico", 403,
+            "USUARIO_NO_REGISTRADO", False,
+        ),
+        (
+            "POST", "/usuarios/registro-paciente", 403,
+            "USUARIO_NO_REGISTRADO", False,
+        ),
+    ],
+)
+def test_identificador_registro_incompleto(
+    entorno,
+    metodo,
+    ruta,
+    estado,
+    valor,
+    esperado,
+):
+    cliente, solicitudes, configuracion = entorno
+
+    configuracion["status"] = estado
+
+    configuracion["headers"]["x-neuromedx-error"] = valor
+
+    respuesta = cliente.request(
+        metodo,
+        ruta,
+        headers=CABECERAS,
+        content=b"{}" if metodo == "POST" else b"",
+    )
+
+    assert respuesta.status_code == estado
+    assert len(solicitudes) == 1
+
+    if esperado:
+        assert respuesta.headers["x-neuromedx-error"] == (
+            "USUARIO_NO_REGISTRADO"
+        )
+    else:
+        assert "x-neuromedx-error" not in respuesta.headers
+
+    assert respuesta.headers["cache-control"] == "no-store"
+
+
+@pytest.mark.parametrize(
+    "segundo_valor",
+    [
+        "USUARIO_NO_REGISTRADO",
+        "IDENTIFICADOR_DESCONOCIDO",
+    ],
+)
+def test_identificador_duplicado_no_se_reenvia(
+    entorno,
+    segundo_valor,
+):
+    cliente, solicitudes, configuracion = entorno
+
+    configuracion["status"] = 403
+
+    configuracion["headers"] = [
+        ("content-type", "application/json"),
+        ("x-neuromedx-error", "USUARIO_NO_REGISTRADO"),
+        ("x-neuromedx-error", segundo_valor),
+    ]
+
+    respuesta = cliente.get(
+        "/medicos/me",
+        headers=CABECERAS,
+    )
+
+    assert respuesta.status_code == 403
+    assert len(solicitudes) == 1
+    assert "x-neuromedx-error" not in respuesta.headers
+
+
+def test_identificador_falsificado_por_cliente(entorno):
+    cliente, solicitudes, configuracion = entorno
+
+    configuracion["status"] = 403
+
+    respuesta = cliente.get(
+        "/medicos/me",
+        headers={
+            **CABECERAS,
+            "x-neuromedx-error": "USUARIO_NO_REGISTRADO",
+        },
+    )
+
+    assert respuesta.status_code == 403
+    assert len(solicitudes) == 1
+
+    assert "x-neuromedx-error" not in solicitudes[0].headers
+    assert "x-neuromedx-error" not in respuesta.headers

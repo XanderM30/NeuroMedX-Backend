@@ -384,6 +384,19 @@ async def reenviar(request: Request, ruta: str):
                                     respuesta.headers[nombre]
                                 )
 
+                        # Identificador autorizado de registro incompleto
+                        if (
+                            metodo == "GET"
+                            and path == "/medicos/me"
+                            and respuesta.status_code == 403
+                            and respuesta.headers.get_list(
+                                "x-neuromedx-error"
+                            ) == ["USUARIO_NO_REGISTRADO"]
+                        ):
+                            cabeceras_respuesta[
+                                "X-NeuroMedX-Error"
+                            ] = "USUARIO_NO_REGISTRADO"
+
                         return Response(
                             content=bytes(contenido),
                             status_code=respuesta.status_code,

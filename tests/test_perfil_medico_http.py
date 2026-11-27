@@ -155,6 +155,9 @@ def test_perfil_medico_por_estado(
 
     assert respuesta.status_code == 200
 
+    assert "x-neuromedx-error" not in respuesta.headers
+
+
     cuerpo = respuesta.json()
 
     assert cuerpo["usuario"]["id"] == str(USUARIO_ID)
@@ -181,6 +184,9 @@ def test_perfil_sin_token(entorno_perfil):
 
     assert respuesta.status_code == 401
 
+    assert "x-neuromedx-error" not in respuesta.headers
+
+
     e["firebase"].assert_not_called()
     e["engine"].connect.assert_not_called()
     e["consulta_medico"].assert_not_called()
@@ -196,6 +202,9 @@ def test_autenticacion_incorrecta(entorno_perfil):
     )
 
     assert respuesta.status_code == 401
+
+    assert "x-neuromedx-error" not in respuesta.headers
+
 
     e["firebase"].assert_not_called()
 
@@ -221,6 +230,9 @@ def test_token_rechazado(entorno_perfil, detalle):
 
     assert respuesta.status_code == 401
 
+    assert "x-neuromedx-error" not in respuesta.headers
+
+
     e["engine"].connect.assert_not_called()
     e["consulta_medico"].assert_not_called()
 
@@ -234,6 +246,9 @@ def test_correo_no_verificado(entorno_perfil):
     respuesta = consultar(e)
 
     assert respuesta.status_code == 403
+
+    assert "x-neuromedx-error" not in respuesta.headers
+
 
     e["engine"].connect.assert_not_called()
     e["consulta_medico"].assert_not_called()
@@ -249,6 +264,9 @@ def test_identidad_sin_uid(entorno_perfil):
 
     assert respuesta.status_code == 401
 
+    assert "x-neuromedx-error" not in respuesta.headers
+
+
     e["engine"].connect.assert_not_called()
 
 
@@ -261,6 +279,15 @@ def test_usuario_no_registrado(entorno_perfil):
     respuesta = consultar(e)
 
     assert respuesta.status_code == 403
+
+    assert respuesta.headers["x-neuromedx-error"] == (
+        "USUARIO_NO_REGISTRADO"
+    )
+
+    assert respuesta.json()["detail"] == (
+        "El usuario no tiene un perfil registrado en NeuroMedX Connect"
+    )
+
 
     e["consulta_medico"].assert_not_called()
 
@@ -275,6 +302,9 @@ def test_usuario_desactivado(entorno_perfil):
 
     assert respuesta.status_code == 403
 
+    assert "x-neuromedx-error" not in respuesta.headers
+
+
     e["consulta_medico"].assert_not_called()
 
 
@@ -287,6 +317,9 @@ def test_paciente_no_autorizado(entorno_perfil):
     respuesta = consultar(e)
 
     assert respuesta.status_code == 403
+
+    assert "x-neuromedx-error" not in respuesta.headers
+
 
     e["consulta_medico"].assert_not_called()
 
@@ -301,6 +334,9 @@ def test_perfil_medico_inexistente(entorno_perfil):
 
     assert respuesta.status_code == 403
 
+    assert "x-neuromedx-error" not in respuesta.headers
+
+
 
 def test_error_consulta_usuario(entorno_perfil):
 
@@ -313,6 +349,9 @@ def test_error_consulta_usuario(entorno_perfil):
     respuesta = consultar(e)
 
     assert respuesta.status_code == 503
+
+    assert "x-neuromedx-error" not in respuesta.headers
+
 
     assert "Informacion interna" not in respuesta.text
 
@@ -330,6 +369,9 @@ def test_error_consulta_medico(entorno_perfil):
     respuesta = consultar(e)
 
     assert respuesta.status_code == 503
+
+    assert "x-neuromedx-error" not in respuesta.headers
+
 
     assert "Informacion interna" not in respuesta.text
 
@@ -416,6 +458,9 @@ def test_limite_consultas_perfil(entorno_perfil):
     respuesta = consultar(e)
 
     assert respuesta.status_code == 429
+
+    assert "x-neuromedx-error" not in respuesta.headers
+
 
     assert int(respuesta.headers["retry-after"]) > 0
 

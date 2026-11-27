@@ -39,7 +39,7 @@ def generar_cabeceras_cors(origen: str) -> dict[str, str]:
     return {
         "Access-Control-Allow-Origin": origen,
         "Access-Control-Expose-Headers": (
-            "Retry-After, WWW-Authenticate"
+            "Retry-After, WWW-Authenticate, X-NeuroMedX-Error"
         ),
         "Vary": "Origin",
     }

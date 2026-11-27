@@ -750,3 +750,146 @@ def test_error_registro_medico_con_cors(
     ] == ORIGEN
 
     assert len(solicitudes) == 1
+
+
+
+# ==========================================
+# CORS PARA RECUPERACION DE REGISTRO MEDICO
+# ==========================================
+
+def test_cors_exponer_identificador_registro(entorno):
+    cliente, solicitudes, configuracion = entorno
+
+    configuracion["status"] = 403
+
+    configuracion["headers"]["x-neuromedx-error"] = (
+        "USUARIO_NO_REGISTRADO"
+    )
+
+    respuesta = cliente.get(
+        "/medicos/me",
+        headers={
+            **CABECERAS,
+            "origin": ORIGEN,
+        },
+    )
+
+    assert respuesta.status_code == 403
+    assert len(solicitudes) == 1
+
+    assert respuesta.headers["x-neuromedx-error"] == (
+        "USUARIO_NO_REGISTRADO"
+    )
+
+    assert (
+        respuesta.headers["access-control-allow-origin"]
+        == ORIGEN
+    )
+
+    expuestas = {
+        nombre.strip().lower()
+        for nombre in respuesta.headers[
+            "access-control-expose-headers"
+        ].split(",")
+    }
+
+    assert expuestas == {
+        "retry-after",
+        "www-authenticate",
+        "x-neuromedx-error",
+    }
+
+    assert respuesta.headers["cache-control"] == "no-store"
+
+
+def test_cors_identificador_origen_no_autorizado(entorno):
+    cliente, solicitudes, configuracion = entorno
+
+    configuracion["status"] = 403
+
+    configuracion["headers"]["x-neuromedx-error"] = (
+        "USUARIO_NO_REGISTRADO"
+    )
+
+    respuesta = cliente.get(
+        "/medicos/me",
+        headers={
+            **CABECERAS,
+            "origin": "https://externo.example",
+        },
+    )
+
+    assert respuesta.status_code == 403
+    assert len(solicitudes) == 0
+
+    assert "x-neuromedx-error" not in respuesta.headers
+
+    assert (
+        "access-control-allow-origin"
+        not in respuesta.headers
+    )
+
+    assert (
+        "access-control-expose-headers"
+        not in respuesta.headers
+    )
+
+
+def test_cors_identificador_no_permitido_como_entrada(entorno):
+    cliente, solicitudes, _ = entorno
+
+    respuesta = cliente.options(
+        "/medicos/me",
+        headers={
+            **CABECERAS,
+            "origin": ORIGEN,
+            "access-control-request-method": "GET",
+            "access-control-request-headers": (
+                "authorization,x-neuromedx-error"
+            ),
+        },
+    )
+
+    assert respuesta.status_code == 403
+    assert len(solicitudes) == 0
+    assert "x-neuromedx-error" not in respuesta.headers
+
+
+def test_cors_preflight_exponer_identificador(entorno):
+    cliente, solicitudes, _ = entorno
+
+    respuesta = cliente.options(
+        "/medicos/me",
+        headers={
+            **CABECERAS,
+            "origin": ORIGEN,
+            "access-control-request-method": "GET",
+            "access-control-request-headers": "authorization",
+        },
+    )
+
+    assert respuesta.status_code == 204
+    assert len(solicitudes) == 0
+
+    expuestas = {
+        nombre.strip().lower()
+        for nombre in respuesta.headers[
+            "access-control-expose-headers"
+        ].split(",")
+    }
+
+    permitidas = {
+        nombre.strip().lower()
+        for nombre in respuesta.headers[
+            "access-control-allow-headers"
+        ].split(",")
+    }
+
+    assert "x-neuromedx-error" in expuestas
+    assert "x-neuromedx-error" not in permitidas
+    assert "authorization" in permitidas
+
+    assert (
+        respuesta.headers["access-control-allow-origin"]
+        == ORIGEN
+    )
