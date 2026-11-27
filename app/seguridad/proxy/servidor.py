@@ -7,7 +7,7 @@ import anyio
 import httpx
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse, Response
 
 from app.seguridad.proxy.configuracion import (
@@ -31,6 +31,15 @@ from app.seguridad.proxy.cabeceras import (
 from app.seguridad.proxy.mantenimiento import (
     servicio_habilitado,
 )
+from app.seguridad.proxy.politicas import limitar_preflight
+
+from app.seguridad.proxy.cors import (
+    obtener_origen_cors,
+    generar_cabeceras_cors,
+    es_preflight,
+    procesar_preflight,
+    error_cors,
+)
 
 load_dotenv()
 
@@ -52,6 +61,30 @@ app = FastAPI(
     openapi_url=None,
     redirect_slashes=False,
 )
+# ==========================================
+# CABECERAS CORS EN RESPUESTAS HTTP
+# ==========================================
+
+@app.middleware("http")
+async def agregar_cors_respuesta(
+    request: Request,
+    call_next,
+):
+    respuesta = await call_next(request)
+
+    origen = obtener_origen_cors(request)
+
+    if origen is not None and request.method != "OPTIONS":
+
+        cabeceras = generar_cabeceras_cors(origen)
+
+        for nombre, valor in cabeceras.items():
+            if nombre.lower() != "vary":
+                respuesta.headers[nombre] = valor
+
+    respuesta.headers.add_vary_header("Origin")
+
+    return respuesta
 
 def error(codigo: int, mensaje: str):
     return JSONResponse(
@@ -86,14 +119,27 @@ async def reenviar(request: Request, ruta: str):
     metodo = request.method
     path = request.scope["path"]
 
-    if (metodo, path) not in RUTAS_PERMITIDAS:
-        return error(404, "Ruta no disponible.")
+    preflight = es_preflight(request)
 
-    if request.scope.get("raw_path") != path.encode("ascii"):
+    if not preflight:
+        if (metodo, path) not in RUTAS_PERMITIDAS:
+            return error(404, "Ruta no disponible.")
+
+    try:
+        ruta_ascii = path.encode("ascii")
+    except UnicodeEncodeError:
+        return error(400, "Ruta invalida.")
+
+    if request.scope.get("raw_path") != ruta_ascii:
         return error(400, "Ruta invalida.")
 
     if request.scope.get("query_string"):
         return error(400, "Parametros no permitidos.")
+
+    if request.headers.getlist("origin"):
+        if obtener_origen_cors(request) is None:
+            return error_cors("Origen CORS no autorizado.")
+
 
     # Verificar autorizacion de funcionamiento
     if not servicio_habilitado(INDICADOR_PROXY):
@@ -119,6 +165,22 @@ async def reenviar(request: Request, ruta: str):
         cabeceras = preparar_cabeceras(request.headers)
     except ValueError:
         return error(400, "Cabeceras invalidas.")
+
+
+    # Limitar solicitudes preliminares por IP
+    if preflight:
+        try:
+            limitar_preflight(ip_cliente)
+        except HTTPException as exc:
+            return JSONResponse(
+                status_code=exc.status_code,
+                content={"detail": exc.detail},
+                headers={
+                    "Cache-Control": "no-store",
+                    "X-Content-Type-Options": "nosniff",
+                    **(exc.headers or {}),
+                },
+            )
 
     if request.headers.getlist("content-encoding"):
         return error(415, "Codificacion no permitida.")
@@ -166,6 +228,41 @@ async def reenviar(request: Request, ruta: str):
         return error(503, "Servicio temporalmente ocupado.")
 
     try:
+        # Procesar solicitudes preliminares CORS
+        if preflight:
+
+            if longitudes not in ([], ["0"]):
+                return error(
+                    400,
+                    "Preflight con cuerpo no permitido.",
+                )
+
+            if request.headers.getlist("transfer-encoding"):
+                return error(
+                    400,
+                    "Transferencia no permitida.",
+                )
+
+            try:
+                with anyio.fail_after(TIMEOUT_RECEPCION):
+                    async for fragmento in request.stream():
+                        if fragmento:
+                            return error(
+                                400,
+                                "Preflight con cuerpo no permitido.",
+                            )
+
+            except TimeoutError:
+                return error(
+                    408,
+                    "Tiempo de recepcion agotado.",
+                )
+
+            except Exception:
+                return error(400, "Solicitud incompleta.")
+
+            return procesar_preflight(request)
+
         # 8. Recibir cuerpo con limite real y temporal
         cuerpo = bytearray()
 
